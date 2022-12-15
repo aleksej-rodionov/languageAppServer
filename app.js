@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const morgan = require('morgan');
 
 const userRoutes = require('./routes/userRoutes');
+const englishCategoryRoutes = require('./routes/englishCategoryRoutes');
 
 // todo THEN REMOVETHESE AND USE ROUTES INSTEAD!!!
 // const User = require('./models/user');
@@ -35,7 +36,7 @@ app.use(morgan('dev'));
 // routes THEN USE THESE ROUTEs INSTEAD OF CALLING DB FROM THIS FILE!!!
 app.use('/users', userRoutes);
 // app.use('/english-words', englishWordRoutes);
-// app.use('/english-categories', englishCategoryRoutes);
+app.use('/englishcategories', englishCategoryRoutes);
 
 
 

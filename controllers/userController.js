@@ -10,7 +10,7 @@ const user_create = async (req, res) => {
         const user = new User({
             username: req.body.username,
             password: hashedPassword
-    });
+        });
     console.log(user);
     user.save()
         .then((result) => {

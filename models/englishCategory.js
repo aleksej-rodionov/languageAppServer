@@ -3,10 +3,10 @@ const Schema = mongoose.Schema;
 
 const englishCategorySchema = new Schema({
     // id
-    categoryNumber: {
-        type: String,
-        required: true
-    },
+    // categoryNumber: {
+    //     type: String,
+    //     required: true
+    // },
     catName: {
         type: String,
         required: true
