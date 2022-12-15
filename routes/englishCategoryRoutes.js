@@ -5,6 +5,6 @@ const router = express.Router();
 
 
 
-router.post('/', englishCategoryController.english_category_create);
+router.post('/', englishCategoryController.englishcategory_create);
 
 module.exports = router;

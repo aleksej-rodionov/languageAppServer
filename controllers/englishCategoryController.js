@@ -2,10 +2,10 @@ const EnglishCategory = require('../models/englishCategory');
 
 
 
-const english_category_create = (req, res) => {
+const englishcategory_create = (req, res) => {
     console.log(req.body);
     // const englishCategory = new EnglishCategory({
-    //     catName: req.body.catName
+    //     catname: req.body.catName
     // });
     const englishCategory = new EnglishCategory(req.body)
 
@@ -23,5 +23,5 @@ const english_category_create = (req, res) => {
 
 
 module.exports = {
-    english_category_create
+    englishcategory_create
 }

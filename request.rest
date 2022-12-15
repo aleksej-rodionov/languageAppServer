@@ -1,7 +1,7 @@
 
 
 
-
+######################################### USERS #########################################
 POST http://localhost:3000/users
 Content-Type: application/json
 
@@ -11,7 +11,6 @@ Content-Type: application/json
 }
 
 ###
-
 POST http://localhost:3000/users/login
 Content-Type: application/json
 
@@ -21,17 +20,33 @@ Content-Type: application/json
 }
 
 ###
-
 DELETE http://localhost:3000/users/638b91e628043d49956faa52
 // todo
 
 
 
+######################################### ENGLISHWORDS #########################################
 ###
-
-POST http://localhost:3000/englishcategories
-Content-Type: : application/json
+POST http://localhost:3000/englishwords
+Content-Type: application/json
 
 {
-    "catName": "nouns"
+    "catname": "Nouns",
+    "eng": "negotiations",
+    "rus": "переговоры"
 }
+
+
+
+######################################### ENGLISHCATEGORIES #########################################
+###
+POST http://localhost:3000/englishcategories
+Content-Type: application/json
+
+{
+    "catname": "huy"
+}
+
+###
+PUT http://localhost:3000/englishcategories/:catname
+// todo

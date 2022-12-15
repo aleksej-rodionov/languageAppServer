@@ -3,11 +3,11 @@ const Schema = mongoose.Schema;
 
 const englishWordSchema = new Schema({
     // id
-    wordNumber: {
-        type: String,
-        required: true
-    },
-    catName: {
+    // wordNumber: {
+    //     type: String,
+    //     required: true
+    // },
+    catname: {
         type: String,
         required: true
     },

@@ -35,7 +35,7 @@ app.use(morgan('dev'));
 
 // routes THEN USE THESE ROUTEs INSTEAD OF CALLING DB FROM THIS FILE!!!
 app.use('/users', userRoutes);
-// app.use('/english-words', englishWordRoutes);
+// app.use('/englishwords', englishWordRoutes);
 app.use('/englishcategories', englishCategoryRoutes);
 
 

@@ -7,7 +7,7 @@ const englishCategorySchema = new Schema({
     //     type: String,
     //     required: true
     // },
-    catName: {
+    catname: {
         type: String,
         required: true
     }
