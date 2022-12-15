@@ -1,0 +1,19 @@
+{
+  "name": "languageapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aleksej-rodionov/languageAppServer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aleksej-rodionov/languageAppServer/issues"
+  },
+  "homepage": "https://github.com/aleksej-rodionov/languageAppServer#readme"
+}

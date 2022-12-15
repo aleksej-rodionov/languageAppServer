@@ -2,8 +2,10 @@ const express = require('express');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 
+const userRoutes = require('./routes/userRoutes');
+
 // todo THEN REMOVETHESE AND USE ROUTES INSTEAD!!!
-const User = require('./models/user');
+// const User = require('./models/user');
 const EnglishWord = require('./models/englishWord');
 const EnglishCategory = require('./models/englishCategory');
 
@@ -16,6 +18,8 @@ const bodyParser = require('body-parser');
 // dbUri
 const dbURI = 'mongodb+srv://alexey:Govnohuy91@realblog.a3hilmj.mongodb.net/language-app?retryWrites=true&w=majority'
 
+
+mongoose.set("strictQuery", false); // added because of 15.12.22 Warning
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then((result) => { app.listen(3000) })
     .catch((err) => { console.log(err) });
@@ -29,7 +33,7 @@ app.use(express.json());
 app.use(morgan('dev'));
 
 // routes THEN USE THESE ROUTEs INSTEAD OF CALLING DB FROM THIS FILE!!!
-// app.use('/users', userRoutes);
+app.use('/users', userRoutes);
 // app.use('/english-words', englishWordRoutes);
 // app.use('/english-categories', englishCategoryRoutes);
 
@@ -37,6 +41,9 @@ app.use(morgan('dev'));
 
 // DIFFERENT TYPES OF REQUESTS (SANDBOX)==================================
 
+// app.post(/englishwords, async (req, res) => {
+    
+// });
 
 
 
