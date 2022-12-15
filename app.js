@@ -3,12 +3,13 @@ const mongoose = require('mongoose');
 const morgan = require('morgan');
 
 const userRoutes = require('./routes/userRoutes');
+const englishWordRoutes = require('./routes/englishWordRoutes');
 const englishCategoryRoutes = require('./routes/englishCategoryRoutes');
 
 // todo THEN REMOVETHESE AND USE ROUTES INSTEAD!!!
 // const User = require('./models/user');
-const EnglishWord = require('./models/englishWord');
-const EnglishCategory = require('./models/englishCategory');
+// const EnglishWord = require('./models/englishWord');
+// const EnglishCategory = require('./models/englishCategory');
 
 const app = express();
 
@@ -35,23 +36,8 @@ app.use(morgan('dev'));
 
 // routes THEN USE THESE ROUTEs INSTEAD OF CALLING DB FROM THIS FILE!!!
 app.use('/users', userRoutes);
-// app.use('/englishwords', englishWordRoutes);
+app.use('/englishwords', englishWordRoutes);
 app.use('/englishcategories', englishCategoryRoutes);
-
-
-
-// DIFFERENT TYPES OF REQUESTS (SANDBOX)==================================
-
-// app.post(/englishwords, async (req, res) => {
-    
-// });
-
-
-
-
-
-
-// DIFFERENT TYPES OF REQUESTS (SANDBOX) - END==================================
 
 
 

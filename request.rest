@@ -31,9 +31,9 @@ POST http://localhost:3000/englishwords
 Content-Type: application/json
 
 {
-    "catname": "Nouns",
-    "eng": "negotiations",
-    "rus": "переговоры"
+    "catname": "Phrases",
+    "eng": "later on",
+    "rus": "как-нибудь потом"
 }
 
 
@@ -48,5 +48,9 @@ Content-Type: application/json
 }
 
 ###
-PUT http://localhost:3000/englishcategories/:catname
+PUT http://localhost:3000/englishcategories/:id
 // todo
+
+###
+DELETE http://localhost:3000/englishcategories/:id
+//todo
