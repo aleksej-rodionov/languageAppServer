@@ -48,9 +48,14 @@ Content-Type: application/json
 }
 
 ###
-PUT http://localhost:3000/englishcategories/:id
-// todo
+# PUT http://localhost:3000/englishcategories/:id
+PUT http://localhost:3000/englishcategories/639bdf4f685b4e601a16dbcb
+Content-Type: application/json
+
+{
+    "catname": "Nouns"
+}
 
 ###
-DELETE http://localhost:3000/englishcategories/:id
-//todo
+# DELETE http://localhost:3000/englishcategories/:id
+DELETE http://localhost:3000/englishcategories/639ac1177bfc05cc47a3883c

@@ -42,10 +42,35 @@ const user_delete = (req, res) => {
         });
 }
 
+const user_index = (req, res) => {
+    User.find().sort({createdAt: -1})
+        .then((result) => {
+            console.log(result);
+            res.send(result);
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+}
+
+const user_details = (req, res) => {
+    const id = req.params.id;
+    User.findById(id)
+        .then((result) => {
+            console.log(result);
+            res.send(result);
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+}
+
 
 
 module.exports = {
     user_create,
     user_login,
-    user_delete
+    user_delete,
+    user_index,
+    user_details
 }
