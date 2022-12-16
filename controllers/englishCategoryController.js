@@ -19,8 +19,10 @@ const englishcategory_create = (req, res) => {
 
 const englishcategory_update = (req, res) => {
     const id = req.params.id
-    console.log(id);
-    EnglishCategory.findByIdAndUpdate(id, req.body)
+    // const englishCategory = {
+    //     catname: req.body.catname
+    // }
+    console.log(id);EnglishCategory.findByIdAndUpdate(id, req.body)
         .then((result) => {
             console.log(result);
             res.send(result);

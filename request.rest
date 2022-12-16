@@ -70,11 +70,11 @@ Content-Type: application/json
 
 ###
 # PUT http://localhost:3000/englishcategories/:id
-PUT http://localhost:3000/englishcategories/639bdf4f685b4e601a16dbcb
+PUT http://localhost:3000/englishcategories/639abb3b72ae0bb0e6411721
 Content-Type: application/json
 
 {
-    "catname": "Nouns"
+    "catname": "Verbs"
 }
 
 
