@@ -14,6 +14,30 @@ const englishword_create = (req, res) => {
         });
 }
 
+const englishword_update = (req, res) => {
+    const id = req.params.id;
+
+    EnglishWord.findByIdAndUpdate(id, req.body)
+        .then((result) => {
+            res.send(result);
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+}
+
+const englishword_delete = (req, res) => {
+    const id = req.params.id;
+
+    EnglishWord.findByIdAndDelete(id)
+        .then((result) => {
+            res.send(result);
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+}
+
 const englishword_index = (req, res) => {
     EnglishWord.find().sort({ eng: -1 }) // todo sort by alphabet by "eng" field
         .then((result) => {
@@ -41,6 +65,8 @@ const englishword_details = (req, res) => {
 
 module.exports = {
     englishword_create,
+    englishword_update,
+    englishword_delete,
     englishword_index,
     englishword_details
 }

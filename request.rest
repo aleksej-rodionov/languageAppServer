@@ -6,8 +6,8 @@ POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-    "username": "testUser1",
-    "password": "password1"
+    "username": "testUser2",
+    "password": "password2"
 }
 
 
@@ -22,8 +22,17 @@ Content-Type: application/json
 
 
 ###
-DELETE http://localhost:3000/users/638b91e628043d49956faa52
-// todo
+PUT http://localhost:3000/users/:id
+Content-Type: application/json
+
+{
+    "username": "testUser999",
+    "password": "password999"
+}
+
+
+###
+DELETE http://localhost:3000/users/:id
 
 
 ###
@@ -37,7 +46,6 @@ GET http://localhost:3000/users/:id
 
 
 ######################################### ENGLISHWORDS #########################################
-###
 POST http://localhost:3000/englishwords
 Content-Type: application/json
 
@@ -59,7 +67,6 @@ GET http://localhost:3000/englishwords/:id
 
 
 ######################################### ENGLISHCATEGORIES #########################################
-###
 POST http://localhost:3000/englishcategories
 Content-Type: application/json
 
