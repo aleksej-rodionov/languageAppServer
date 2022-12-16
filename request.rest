@@ -10,6 +10,7 @@ Content-Type: application/json
     "password": "password1"
 }
 
+
 ###
 POST http://localhost:3000/users/login
 Content-Type: application/json
@@ -19,9 +20,19 @@ Content-Type: application/json
     "password": "password2"
 }
 
+
 ###
 DELETE http://localhost:3000/users/638b91e628043d49956faa52
 // todo
+
+
+###
+GET http://localhost:3000/users/
+
+
+###
+GET http://localhost:3000/users/:id
+
 
 
 
@@ -37,6 +48,15 @@ Content-Type: application/json
 }
 
 
+###
+GET http://localhost:3000/englishwords/
+
+
+###
+GET http://localhost:3000/englishwords/:id
+
+
+
 
 ######################################### ENGLISHCATEGORIES #########################################
 ###
@@ -47,6 +67,7 @@ Content-Type: application/json
     "catname": "huy"
 }
 
+
 ###
 # PUT http://localhost:3000/englishcategories/:id
 PUT http://localhost:3000/englishcategories/639bdf4f685b4e601a16dbcb
@@ -56,6 +77,15 @@ Content-Type: application/json
     "catname": "Nouns"
 }
 
+
 ###
 # DELETE http://localhost:3000/englishcategories/:id
 DELETE http://localhost:3000/englishcategories/639ac1177bfc05cc47a3883c
+
+
+###
+GET http://localhost:3000/englishcategories/
+
+
+###
+GET http://localhost:3000/englishcategories/:id

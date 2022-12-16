@@ -17,7 +17,7 @@ const englishword_create = (req, res) => {
 const englishword_index = (req, res) => {
     EnglishWord.find().sort({ eng: -1 }) // todo sort by alphabet by "eng" field
         .then((result) => {
-            console.log(result);
+            // console.log(result);
             res.send(result);
         })
         .catch((err) => {
@@ -29,7 +29,7 @@ const englishword_details = (req, res) => {
     const id = req.params.id;
     EnglishWord.findById(id)
         .then((result) => {
-            console.log(result);
+            // console.log(result);
             res.send(result);
         })
         .catch((err) => {

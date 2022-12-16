@@ -46,7 +46,7 @@ const englishcategory_delete = (req, res) => {
 const englishcategory_index = (req, res) => {
     EnglishCategory.find().sort({ createdAt: -1 })
         .then((result) => {
-            console.log(result);
+            // console.log(result);
             res.send(result);
         })
         .catch((err) => {
@@ -58,7 +58,7 @@ const englishcategory_details = (req, res) => {
     const id = req.params.id;
     EnglishCategory.findById(id)
         .then((result) => {
-            console.log(result);
+            // console.log(result);
             res.send(result);
         })
         .catch((err) => {
