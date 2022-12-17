@@ -57,6 +57,17 @@ Content-Type: application/json
 
 
 ###
+PUT http://localhost:3000/englishwords/:id
+Content-Type: application/json
+
+{
+    "catname": "Phrases",
+    "eng": "later on",
+    "rus": "как-нибудь потом"
+}
+
+
+###
 GET http://localhost:3000/englishwords/
 
 
