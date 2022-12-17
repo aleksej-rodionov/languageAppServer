@@ -2,18 +2,12 @@ const express = require('express');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 
-const userRoutes = require('./routes/userRoutes');
+// const userRoutes = require('./routes/userRoutes');
 const englishWordRoutes = require('./routes/englishWordRoutes');
 const englishCategoryRoutes = require('./routes/englishCategoryRoutes');
 
-// todo THEN REMOVETHESE AND USE ROUTES INSTEAD!!!
-// const User = require('./models/user');
-// const EnglishWord = require('./models/englishWord');
-// const EnglishCategory = require('./models/englishCategory');
-
 const app = express();
 
-const bcrypt = require('bcrypt');
 const bodyParser = require('body-parser');
 
 
@@ -35,7 +29,7 @@ app.use(express.json());
 app.use(morgan('dev'));
 
 // routes THEN USE THESE ROUTEs INSTEAD OF CALLING DB FROM THIS FILE!!!
-app.use('/users', userRoutes);
+// app.use('/users', userRoutes);
 app.use('/englishwords', englishWordRoutes);
 app.use('/englishcategories', englishCategoryRoutes);
 
