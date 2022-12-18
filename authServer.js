@@ -25,11 +25,17 @@ app.use(express.json());
 
 app.use(morgan('dev'));
 
+
+
+
+
+let refreshTokens = [] // todo DELETE and store refreshTokens in mongoDB
+
 //=================AUTH ENDPOINTS START===================
 
 
 //register
-app.post('/users/register', async (req, res) => {
+app.post('/auth/register', async (req, res) => {
     const { email, password: plainTextPassword } = req.body
     
     if (!email || typeof email !== 'string') {
@@ -68,7 +74,7 @@ app.post('/users/register', async (req, res) => {
 
 
 //login
-app.post('/users/login', async (req, res) => {
+app.post('/auth/login', async (req, res) => {
     const { email, password } = req.body
     const user = await User.findOne({ email }).lean()
 
@@ -78,31 +84,41 @@ app.post('/users/login', async (req, res) => {
 
     if (await bcrypt.compare(password, user.password)) {
  
-        const token = generateAccessToken({
-				id: user._id,
-				username: user.username
-			});
-        return res.json({ status: 'ok', data: token });
+        const token = generateAccessToken(user);
+        const refreshToken = jwt.sign(user, process.env.REFRESH_TOKEN_SECRET);
+        refreshTokens.push(refreshToken); // todo DELETE and store refreshToken in mongoDB
+
+        return res.json({ status: 'ok', accessToken: token, refreshToken: refreshToken });
 	}
 
 	res.json({ status: 'error', error: 'Invalid email/password (passwords are not the same)' });
 });
 
 
-//change-password
-app.post('/users/change-password', async (req, res) => {
-    // todo
+//refresh-token
+app.post('/auth/refresh-token', async (req, res) => {
+    const refreshToken = req.body.token;
+    if (refreshToken == null) return res.sendStatus(401);
+    /**
+     * todo DELETE below and use mongoDB to store refreshTokens
+     */
+    if (!refreshTokens.includes(refreshToken)) return res.sendStatus(403);
+    jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
+        if (err) return res.sendStatus(403);
+        const accessToken = generateAccessToken({ email: user.email });
+        res.json({ accessToken: accessToken });
+    })
 });
 
 
-//token?
-app.post('/users/token', async (req, res) => {
+//change-password
+app.post('/auth/change-password', async (req, res) => {
     // todo
 });
 
 
 //logout
-app.delete('/users/logout', (req, res) => {
+app.delete('/auth/logout', (req, res) => {
     // todo
 });
 
@@ -118,5 +134,5 @@ app.use((req, res) => {
 
 //===========================FUNCTIONS============================
 function generateAccessToken(user) {
-    return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET)
+    return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '15s' });
 }

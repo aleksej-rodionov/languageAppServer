@@ -10,7 +10,6 @@ const englishWordRoutes = require('./routes/englishWordRoutes');
 const englishCategoryRoutes = require('./routes/englishCategoryRoutes');
 
 const app = express();
-const jwt = require('jsonwebtoken')
 
 const bodyParser = require('body-parser');
 

@@ -16,10 +16,17 @@ POST http://localhost:4000/users/login
 Content-Type: application/json
 
 {
-    # "email": "rodionovjr91@gmail.com",
-    # "password": "govnojed"
-    "email": "rodionovjr991@gmail.com",
-    "password": "password3"
+    "email": "rodionovjr91@gmail.com",
+    "password": "govnojed"
+}
+
+
+###
+POST http://localhost:3000/refresh-token
+Content-Type: application/json
+
+{
+    "token": ""
 }
 
 
@@ -52,7 +59,7 @@ GET http://localhost:3000/users/:id
 ######################################### NOTES #########################################
 # GET http://localhost:3000/notes/:email
 GET http://localhost:3000/notes/rodionovjr91@gmail.com
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzOWU5MzA3YzYzNTExZTA3OWU2NGQ2NCIsImlhdCI6MTY3MTM0MzM4Nn0.VbUi9pXQ-tkXwPSYZmOP0FvJLBYJhnQ96OlGTsQOpdk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzllOGIwNjMwY2Q5NTQ0OTA2Y2ZiZjMiLCJlbWFpbCI6InJvZGlvbm92anI5OTFAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkOEh6L2hNa0IwSlNiRTJkQzZ4ZDFIT1VFZWlPencyUWJ1eGYuY2ZFSE5ZZ2IzN2xlNnN0d2EiLCJjcmVhdGVkQXQiOiIyMDIyLTEyLTE4VDAzOjM3OjQyLjMxOVoiLCJ1cGRhdGVkQXQiOiIyMDIyLTEyLTE4VDAzOjM3OjQyLjMxOVoiLCJfX3YiOjAsImlhdCI6MTY3MTM1NTYzMywiZXhwIjoxNjcxMzU1NjQ4fQ.gZ4DHY7G0asrTuYyhmTWOEqvGjDYWF37vA0aLr118gQ
 
 
 ###
