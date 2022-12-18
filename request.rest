@@ -1,7 +1,7 @@
 
 
 
-######################################### USERS #########################################
+######################################### AUTH #########################################
 POST http://localhost:4000/users/register
 Content-Type: application/json
 
@@ -16,51 +16,53 @@ POST http://localhost:4000/users/login
 Content-Type: application/json
 
 {
+    # "email": "rodionovjr91@gmail.com",
+    # "password": "govnojed"
     "email": "rodionovjr991@gmail.com",
     "password": "password3"
 }
 
 
-# ###
-# POST http://localhost:3000/users/register
-# Content-Type: application/json
-
-# {
-#     "username": "testUser2",
-#     "password": "password2"
-# }
 
 
-# ###
-# POST http://localhost:3000/users/login
-# Content-Type: application/json
+######################################### USERS #########################################
+PUT http://localhost:3000/users/:id
+Content-Type: application/json
 
-# {
-#     "username": "testUser2",
-#     "password": "password2"
-# }
-
-
-# ###
-# PUT http://localhost:3000/users/:id
-# Content-Type: application/json
-
-# {
-#     "username": "testUser999",
-#     "password": "password999"
-# }
+{
+    "username": "testUser999",
+    "password": "password999"
+}
 
 
-# ###
-# DELETE http://localhost:3000/users/:id
+###
+DELETE http://localhost:3000/users/:id
 
 
-# ###
-# GET http://localhost:3000/users/
+###
+GET http://localhost:3000/users/
 
 
-# ###
-# GET http://localhost:3000/users/:id
+###
+GET http://localhost:3000/users/:id
+
+
+
+
+######################################### NOTES #########################################
+# GET http://localhost:3000/notes/:email
+GET http://localhost:3000/notes/rodionovjr91@gmail.com
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzOWU5MzA3YzYzNTExZTA3OWU2NGQ2NCIsImlhdCI6MTY3MTM0MzM4Nn0.VbUi9pXQ-tkXwPSYZmOP0FvJLBYJhnQ96OlGTsQOpdk
+
+
+###
+POST http://localhost:3000/notes/
+Content-Type: application/json
+
+{
+    "email": "rodionovkr91@gmail.com",
+    "text": "Ty pidor" 
+}
 
 
 
@@ -126,4 +128,4 @@ GET http://localhost:3000/englishcategories/
 
 
 ###
-GET http://localhost:3000/englishcategories/:id
+GET http://localhost:3000/englishcategories/639abb1972ae0bb0e641171f

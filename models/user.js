@@ -17,6 +17,7 @@ const userSchema = new Schema({
         required: true
     }
     // todo add engProgress
+    // todo add catSettings
     // todo add custom Words
     // todo add custom Categories
 }, { timestamps: true });

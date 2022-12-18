@@ -1,7 +1,5 @@
 const User = require('../models/user')
 
-const bcrypt = require('bcrypt');
-
 
 
 const user_index = (req, res) => {
@@ -27,6 +25,17 @@ const user_details = (req, res) => {
         });
 }
 
+const user_testtext = (req, res) => {
+    const id = req.params.id;
+    User.findById(id)
+        .then((result) => {
+            res.send(result);
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+}
+
 const user_update = (req, res) => {
     const id = req.params.id;
 
@@ -43,14 +52,13 @@ const user_update = (req, res) => {
 const user_delete = (req, res) => {
     const id = req.params.id
 
-    User.findByIdAndDelete(id)
-        .then((result) => {
-            // console.log(result);
-            res.send(result);
-        })
-        .catch((err) => {
-            console.log(err);
-        });
+    const user = User.findByIdAndDelete(id)
+    const testtext = user.testtext
+    if (testtext) {
+        return res.json({ status: 'ok', data: testtext });
+    }
+
+    res.json({ status: error, error: "Testtext not found" })
 }
 
 
@@ -58,6 +66,7 @@ const user_delete = (req, res) => {
 module.exports = {
     user_index,
     user_details,
+    user_testtext,
     user_update,
     user_delete
 }

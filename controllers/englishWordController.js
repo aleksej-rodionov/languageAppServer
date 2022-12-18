@@ -53,7 +53,7 @@ const englishword_details = (req, res) => {
     const id = req.params.id;
     EnglishWord.findById(id)
         .then((result) => {
-            // console.log(result);
+            console.log(result);
             res.send(result);
         })
         .catch((err) => {

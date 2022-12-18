@@ -1,15 +1,14 @@
 const express = require('express');
-const userController = require('../controllers/userController');
+const noteController = require('../controllers/noteController');
+const jwt = require('jsonwebtoken')
 
 const router = express.Router();
 
 
 
-router.get('/', userController.user_index);
-router.get('/:id', userController.user_details);
-router.get('/testtext/:id', authenticateToken, userController.user_testtext);
-router.put('/:id', userController.user_update);
-router.delete('/:id', userController.user_delete);
+router.post('/', noteController.note_create);
+router.get('/', noteController.note_index);
+router.get('/:email', authenticateToken, noteController.note_index_by_email);
 
 module.exports = router;
 
