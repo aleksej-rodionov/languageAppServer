@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const express = require('express');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
@@ -6,12 +8,13 @@ const bcrypt = require('bcrypt');
 const bodyParser = require('body-parser');
 
 const app = express();
+const jwt = require('jsonwebtoken')
 
 const dbURI = 'mongodb+srv://alexey:Govnohuy91@realblog.a3hilmj.mongodb.net/language-app?retryWrites=true&w=majority'
 
 mongoose.set("strictQuery", false); // added because of 15.12.22 Warning
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then((result) => { app.listen(3000) })
+    .then((result) => { app.listen(4000) })
     .catch((err) => { console.log(err) });
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -27,12 +30,10 @@ app.use(morgan('dev'));
 
 //register
 app.post('/users/register', async (req, res) => {
-    console.log(req.body);
-
-    const { username, password: plainTextPassword } = req.body
-
-    if (!username || typeof username !== 'string') {
-		return res.json({ status: 'error', error: 'Invalid username' })
+    const { email, password: plainTextPassword } = req.body
+    
+    if (!email || typeof email !== 'string') {
+		return res.json({ status: 'error', error: 'Invalid email' })
 	}
 
 	if (!plainTextPassword || typeof plainTextPassword !== 'string') {
@@ -49,49 +50,42 @@ app.post('/users/register', async (req, res) => {
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
     try {
-        const user = await new User({
-            username: req.body.username,
-            password: hashedPassword
-        });
-        User.create(user)
-            .then((result) => {
-                res.send(result)
-            })
-            .catch((err) => {
-                console.log(err)
-            });
-            console.log('User created successfully: ', user);
+        const response = await User.create({
+			email,
+			password: hashedPassword
+		});
+        console.log('User created successfully: ', response)
     } catch (err) {
-        console.log('catch block fired')
         if (err.code === 11000) {
 			// duplicate key
-			return res.json({ status: 'error', error: 'Username already in use' })
+			return res.json({ status: 'error', error: 'Email already in use' })
 		}
-        // res.status(500).send()
         throw err
     }
-    
+
     res.json({ status: 'ok' })
 });
 
 
 //login
 app.post('/users/login', async (req, res) => {
-    const { username, password } = req.body
-    const user = await User.findOne({ username }).lean()
+    const { email, password } = req.body
+    const user = await User.findOne({ email }).lean()
 
     if (!user) {
-		return res.json({ status: 'error', error: 'Invalid username/password' })
+		return res.json({ status: 'error', error: 'Invalid email/password (user == null)' });
 	}
 
     if (await bcrypt.compare(password, user.password)) {
  
-        const token = "sdelaj jobanyj token" // todo jwt shit
-
-        return res.json({ status: 'ok', data: token })
+        const token = generateAccessToken({
+				id: user._id,
+				username: user.username
+			});
+        return res.json({ status: 'ok', data: token });
 	}
 
-	res.json({ status: 'error', error: 'Invalid username/password' })
+	res.json({ status: 'error', error: 'Invalid email/password (passwords are not the same)' });
 });
 
 
@@ -114,9 +108,15 @@ app.delete('/users/logout', (req, res) => {
 
 
 
-
 //=================AUTH ENDPOINTS END===================
 
 app.use((req, res) => {
     res.status(404).json({ error: 'Nothing found' })
 });
+
+
+
+//===========================FUNCTIONS============================
+function generateAccessToken(user) {
+    return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET)
+}

@@ -1,12 +1,15 @@
+require('dotenv').config()
+
 const express = require('express');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 
-// const userRoutes = require('./routes/userRoutes');
+const userRoutes = require('./routes/userRoutes');
 const englishWordRoutes = require('./routes/englishWordRoutes');
 const englishCategoryRoutes = require('./routes/englishCategoryRoutes');
 
 const app = express();
+const jwt = require('jsonwebtoken')
 
 const bodyParser = require('body-parser');
 
@@ -29,7 +32,7 @@ app.use(express.json());
 app.use(morgan('dev'));
 
 // routes THEN USE THESE ROUTEs INSTEAD OF CALLING DB FROM THIS FILE!!!
-// app.use('/users', userRoutes);
+app.use('/users', userRoutes);
 app.use('/englishwords', englishWordRoutes);
 app.use('/englishcategories', englishCategoryRoutes);
 
@@ -38,3 +41,6 @@ app.use('/englishcategories', englishCategoryRoutes);
 app.use((req, res) => {
     res.status(404).json({ error: 'Nothing found' })
 });
+
+
+

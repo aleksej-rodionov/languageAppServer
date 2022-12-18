@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/aleksej-rodionov/languageAppServer/issues"
   },
-  "homepage": "https://github.com/aleksej-rodionov/languageAppServer#readme"
+  "homepage": "https://github.com/aleksej-rodionov/languageAppServer#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "jsonwebtoken": "^8.5.1"
+  }
 }
