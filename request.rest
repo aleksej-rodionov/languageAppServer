@@ -2,7 +2,7 @@
 
 
 ######################################### AUTH #########################################
-POST http://localhost:4000/users/register
+POST http://localhost:4000/auth/register
 Content-Type: application/json
 
 {
@@ -12,7 +12,7 @@ Content-Type: application/json
 
 
 ###
-POST http://localhost:4000/users/login
+POST http://localhost:4000/auth/login
 Content-Type: application/json
 
 {
@@ -22,14 +22,21 @@ Content-Type: application/json
 
 
 ###
-POST http://localhost:3000/refresh-token
+POST http://localhost:4000/auth/refresh-token
 Content-Type: application/json
 
 {
-    "token": ""
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzllOTMwN2M2MzUxMWUwNzllNjRkNjQiLCJlbWFpbCI6InJvZGlvbm92anI5MUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRqYXJRWG52UFkzRkcyS1RaWGpaVXBlcGhsOFkuOHVLNVJMQ3dobkhzRS9DQ2xHcC5ERlQxLiIsImNyZWF0ZWRBdCI6IjIwMjItMTItMThUMDQ6MTE6NTEuMzA3WiIsInVwZGF0ZWRBdCI6IjIwMjItMTItMThUMDQ6MTE6NTEuMzA3WiIsIl9fdiI6MCwiaWF0IjoxNjcxMzY3NzI3fQ.FbtPsXVmWHB6SHsnvW1k4V73xttzVSoOrFqJYpyMaok"
 }
 
 
+###
+DELETE http://localhost:4000/auth/logout
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzllOTMwN2M2MzUxMWUwNzllNjRkNjQiLCJlbWFpbCI6InJvZGlvbm92anI5MUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRqYXJRWG52UFkzRkcyS1RaWGpaVXBlcGhsOFkuOHVLNVJMQ3dobkhzRS9DQ2xHcC5ERlQxLiIsImNyZWF0ZWRBdCI6IjIwMjItMTItMThUMDQ6MTE6NTEuMzA3WiIsInVwZGF0ZWRBdCI6IjIwMjItMTItMThUMDQ6MTE6NTEuMzA3WiIsIl9fdiI6MCwiaWF0IjoxNjcxMzY3NzI3fQ.FbtPsXVmWHB6SHsnvW1k4V73xttzVSoOrFqJYpyMaok"
+}
 
 
 ######################################### USERS #########################################
@@ -59,7 +66,7 @@ GET http://localhost:3000/users/:id
 ######################################### NOTES #########################################
 # GET http://localhost:3000/notes/:email
 GET http://localhost:3000/notes/rodionovjr91@gmail.com
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzllOGIwNjMwY2Q5NTQ0OTA2Y2ZiZjMiLCJlbWFpbCI6InJvZGlvbm92anI5OTFAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkOEh6L2hNa0IwSlNiRTJkQzZ4ZDFIT1VFZWlPencyUWJ1eGYuY2ZFSE5ZZ2IzN2xlNnN0d2EiLCJjcmVhdGVkQXQiOiIyMDIyLTEyLTE4VDAzOjM3OjQyLjMxOVoiLCJ1cGRhdGVkQXQiOiIyMDIyLTEyLTE4VDAzOjM3OjQyLjMxOVoiLCJfX3YiOjAsImlhdCI6MTY3MTM1NTYzMywiZXhwIjoxNjcxMzU1NjQ4fQ.gZ4DHY7G0asrTuYyhmTWOEqvGjDYWF37vA0aLr118gQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvZGlvbm92anI5MUBnbWFpbC5jb20iLCJpYXQiOjE2NzEzNjc4NjIsImV4cCI6MTY3MTM2Nzg3N30.PTo8pHSYeFjSQPx_4OzRsRWh9SZ9s1EWAGWkbyq9CL0
 
 
 ###

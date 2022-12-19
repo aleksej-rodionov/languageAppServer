@@ -119,7 +119,8 @@ app.post('/auth/change-password', async (req, res) => {
 
 //logout
 app.delete('/auth/logout', (req, res) => {
-    // todo
+    refreshTokens = refreshTokens.filter(token =>token !== req.body.token);
+    res.sendStatus(204);
 });
 
 
