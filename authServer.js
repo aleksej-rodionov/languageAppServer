@@ -6,6 +6,7 @@ const morgan = require('morgan');
 const User = require('./models/user');
 const bcrypt = require('bcrypt');
 const bodyParser = require('body-parser');
+const RefreshTokenModel = require('./models/refreshToken')
 
 const app = express();
 const jwt = require('jsonwebtoken')
@@ -29,7 +30,7 @@ app.use(morgan('dev'));
 
 
 
-let refreshTokens = [] // todo DELETE and store refreshTokens in mongoDB
+// let refreshTokens = [] // todo DELETE and store refreshTokens in mongoDB
 
 //=================AUTH ENDPOINTS START===================
 
@@ -86,7 +87,20 @@ app.post('/auth/login', async (req, res) => {
  
         const token = generateAccessToken(user);
         const refreshToken = jwt.sign(user, process.env.REFRESH_TOKEN_SECRET);
-        refreshTokens.push(refreshToken); // todo DELETE and store refreshToken in mongoDB
+
+        /**
+         * todo DELETE below and store refreshToken in mongoDB
+         */
+        // refreshTokens.push(refreshToken);
+        const refreshTokenEntity = new RefreshTokenModel({ token: refreshToken, user: user });
+        refreshTokenEntity.save()
+            .then((result) => {
+                console.log("REFRESH_TOKEN STORED IN mongoDB:\n" + result);
+            })
+            .catch((err) => {
+                console.log("ERROR STORING REFRESH_TOKEN:\n" + err);
+            });
+        //====================================================================================
 
         return res.json({ status: 'ok', accessToken: token, refreshToken: refreshToken });
 	}
@@ -99,15 +113,25 @@ app.post('/auth/login', async (req, res) => {
 app.post('/auth/refresh-token', async (req, res) => {
     const refreshToken = req.body.token;
     if (refreshToken == null) return res.sendStatus(401);
+
     /**
      * todo DELETE below and use mongoDB to store refreshTokens
      */
-    if (!refreshTokens.includes(refreshToken)) return res.sendStatus(403);
+    // if (!refreshTokens.includes(refreshToken)) return res.sendStatus(403);
+    // jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
+    //     if (err) return res.sendStatus(403);
+    //     const accessToken = generateAccessToken({ email: user.email });
+    //     res.json({ accessToken: accessToken });
+    // });
+    if (!RefreshTokenModel.find({ token: refreshToken })) return res.sendStatus(403);
     jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
+        console.log("Verifying RefreshTokenModel is fired...")
         if (err) return res.sendStatus(403);
         const accessToken = generateAccessToken({ email: user.email });
         res.json({ accessToken: accessToken });
-    })
+    });
+    //====================================================================================
+
 });
 
 
@@ -119,8 +143,21 @@ app.post('/auth/change-password', async (req, res) => {
 
 //logout
 app.delete('/auth/logout', (req, res) => {
-    refreshTokens = refreshTokens.filter(token =>token !== req.body.token);
-    res.sendStatus(204);
+
+    /**
+     * todo DELETE below and use mongoDB to store refreshTokens
+     */
+    // refreshTokens = refreshTokens.filter(token =>token !== req.body.token);
+    // res.sendStatus(204);
+    RefreshTokenModel.find({ token: req.body.token })
+        .then((result) => {
+            console.log("REFRESH_TOKEN SUCCESSFULLY DELETED:\n" + result);
+        })
+        .catch((err) => {
+            console.log("ERROR DELETING REFRESH_TOKEN:\n" + err);
+        });
+    //====================================================================================
+
 });
 
 
@@ -135,5 +172,5 @@ app.use((req, res) => {
 
 //===========================FUNCTIONS============================
 function generateAccessToken(user) {
-    return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '15s' });
+    return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '30s' });
 }

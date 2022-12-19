@@ -26,7 +26,7 @@ POST http://localhost:4000/auth/refresh-token
 Content-Type: application/json
 
 {
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzllOTMwN2M2MzUxMWUwNzllNjRkNjQiLCJlbWFpbCI6InJvZGlvbm92anI5MUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRqYXJRWG52UFkzRkcyS1RaWGpaVXBlcGhsOFkuOHVLNVJMQ3dobkhzRS9DQ2xHcC5ERlQxLiIsImNyZWF0ZWRBdCI6IjIwMjItMTItMThUMDQ6MTE6NTEuMzA3WiIsInVwZGF0ZWRBdCI6IjIwMjItMTItMThUMDQ6MTE6NTEuMzA3WiIsIl9fdiI6MCwiaWF0IjoxNjcxMzY3NzI3fQ.FbtPsXVmWHB6SHsnvW1k4V73xttzVSoOrFqJYpyMaok"
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzllOTMwN2M2MzUxMWUwNzllNjRkNjQiLCJlbWFpbCI6InJvZGlvbm92anI5MUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRqYXJRWG52UFkzRkcyS1RaWGpaVXBlcGhsOFkuOHVLNVJMQ3dobkhzRS9DQ2xHcC5ERlQxLiIsImNyZWF0ZWRBdCI6IjIwMjItMTItMThUMDQ6MTE6NTEuMzA3WiIsInVwZGF0ZWRBdCI6IjIwMjItMTItMThUMDQ6MTE6NTEuMzA3WiIsIl9fdiI6MCwiaWF0IjoxNjcxNDIwMjkwfQ.CdVxRNFL9FhPuNcEQb8dbeT_GaSNJvCvp-8DUulv4ss"
 }
 
 
@@ -66,7 +66,7 @@ GET http://localhost:3000/users/:id
 ######################################### NOTES #########################################
 # GET http://localhost:3000/notes/:email
 GET http://localhost:3000/notes/rodionovjr91@gmail.com
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvZGlvbm92anI5MUBnbWFpbC5jb20iLCJpYXQiOjE2NzEzNjc4NjIsImV4cCI6MTY3MTM2Nzg3N30.PTo8pHSYeFjSQPx_4OzRsRWh9SZ9s1EWAGWkbyq9CL0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvZGlvbm92anI5MUBnbWFpbC5jb20iLCJpYXQiOjE2NzE0MjAzNTMsImV4cCI6MTY3MTQyMDM4M30.pHGSKQJlGM88pk6rPpVVM1aCwc5hB00BVr8KSWx2uR0
 
 
 ###

@@ -29,7 +29,7 @@ const note_index_by_email = (req, res) => {
     const requestEmail = req.params.email;
     console.log(requestEmail);
 
-    Note.find( {email: requestEmail} )
+    Note.find({ email: requestEmail })
         .then((result) => {
             console.log(result);
             res.send(result);
