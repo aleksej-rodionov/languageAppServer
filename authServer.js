@@ -56,6 +56,8 @@ app.post('/auth/register', async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
+    const user = new User({ email: email, password: plainTextPassword });
+
     try {
         const response = await User.create({
 			email,
@@ -70,7 +72,7 @@ app.post('/auth/register', async (req, res) => {
         throw err
     }
 
-    res.json({ status: 'ok' })
+    res.json({ status: 'ok', body: user })
 });
 
 
@@ -102,10 +104,10 @@ app.post('/auth/login', async (req, res) => {
             });
         //====================================================================================
 
-        return res.json({ status: 'ok', accessToken: token, refreshToken: refreshToken });
+        return res.json({ status: 'ok', body: { accessToken: token, refreshToken: refreshToken }});
 	}
 
-	res.json({ status: 'error', error: 'Invalid email/password (passwords are not the same)' });
+	res.json({ status: 'error', error: 'Invalid email/password (incorrect password)' });
 });
 
 
@@ -149,12 +151,19 @@ app.delete('/auth/logout', (req, res) => {
      */
     // refreshTokens = refreshTokens.filter(token =>token !== req.body.token);
     // res.sendStatus(204);
-    RefreshTokenModel.find({ token: req.body.token })
+    RefreshTokenModel.findOneAndDelete({ token: req.body.token })
         .then((result) => {
             console.log("REFRESH_TOKEN SUCCESSFULLY DELETED:\n" + result);
+            if (!result) {
+                res.json({ status: "ok", body: "User hasn't been logged in" });
+            } else {
+                res.json({ status: "ok", body: "Successfully logged out" });
+            }
+            
         })
         .catch((err) => {
             console.log("ERROR DELETING REFRESH_TOKEN:\n" + err);
+            res.json({ status: "error", error: err });
         });
     //====================================================================================
 
@@ -172,5 +181,5 @@ app.use((req, res) => {
 
 //===========================FUNCTIONS============================
 function generateAccessToken(user) {
-    return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '30s' });
+    return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '40s' });
 }

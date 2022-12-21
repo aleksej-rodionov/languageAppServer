@@ -1,7 +1,6 @@
 {
   "name": "languageapp",
   "version": "1.0.0",
-  "description": "",
   "main": "app.js",
   "scripts": {
     "start": "nodemon app.js",
@@ -18,7 +17,13 @@
   },
   "homepage": "https://github.com/aleksej-rodionov/languageAppServer#readme",
   "dependencies": {
+    "body-parser": "^1.20.1",
     "dotenv": "^16.0.3",
-    "jsonwebtoken": "^8.5.1"
-  }
+    "express": "^4.18.2",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.20"
+  },
+  "keywords": [],
+  "description": ""
 }
