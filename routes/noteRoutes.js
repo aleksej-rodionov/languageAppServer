@@ -7,8 +7,9 @@ const router = express.Router();
 
 
 router.post('/', noteController.note_create);
-router.get('/', noteController.note_index);
-router.get('/:email', authenticateToken, noteController.note_index_by_email);
+// router.get('/', noteController.note_index);
+router.get('/', authenticateToken, noteController.note_index_by_user);
+router.get('/:noteid', authenticateToken, noteController.note_by_id); // todo use const request = require('request');
 
 module.exports = router;
 
@@ -23,7 +24,7 @@ module.exports = router;
 function authenticateToken(req, res, next) {
     const authHeader = req.headers['authorization']
     const token = authHeader && authHeader.split(' ')[1] // cause the Header looks like "Bearer <TOKEN>"
-    console.log(token);
+    // console.log(token);
     if(token == null) return res.sendStatus(401)
 
     jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {

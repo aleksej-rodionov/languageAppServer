@@ -14,10 +14,27 @@ const note_create = (req, res) => {
         });
 }
 
-const note_index = (req, res) => {
+// const note_index = (req, res) => {
+//     console.log("note index request")
 
-    Note.find()
+//     Note.find()
+//         .then((result) => {
+//             res.send(result);
+//         })
+//         .catch((err) => {
+//             console.log(err);
+//         });
+// }
+
+const note_index_by_user = (req, res) => {
+    // const requestEmail = req.params.email;
+    // console.log(requestEmail);
+    const userEmail = req.user.email;
+    console.log(userEmail);
+
+    Note.find({ email: userEmail })
         .then((result) => {
+            console.log(result);
             res.send(result);
         })
         .catch((err) => {
@@ -25,14 +42,30 @@ const note_index = (req, res) => {
         });
 }
 
-const note_index_by_email = (req, res) => {
-    const requestEmail = req.params.email;
-    console.log(requestEmail);
+const note_by_id = (req, res) => {
+    const noteId = req.params.noteid
+    console.log("noteId = " + noteId)
 
-    Note.find({ email: requestEmail })
-        .then((result) => {
-            console.log(result);
-            res.send(result);
+    const userEmail = req.user.email;
+    console.log("userEmail = " + userEmail)
+
+    // const note = Note.findById(noteId)
+    // console.log("XUJ VO RTU = " + note);
+
+    // if (note.email === userEmail) {
+    //     res.json({ status: 'ok', body: note})
+    // } else {
+    //     res.json({ status: 'error', error: "You don\'t have access to this note" })
+    // }
+
+    Note.findOne({ _id: noteId })
+        .then((note) => {
+            console.log(note);
+            if(note.email == userEmail) {
+                res.json({ status: 'ok', body: note })
+            } else {
+                res.json({ status: 'error', error: "You don\'t have access to this note" })
+            }
         })
         .catch((err) => {
             console.log(err);
@@ -44,6 +77,7 @@ const note_index_by_email = (req, res) => {
 
 module.exports = {
     note_create,
-    note_index,
-    note_index_by_email
+    // note_index,
+    note_index_by_user,
+    note_by_id
 }
