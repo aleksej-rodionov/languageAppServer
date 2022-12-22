@@ -35,10 +35,12 @@ const note_index_by_user = (req, res) => {
     Note.find({ email: userEmail })
         .then((result) => {
             console.log(result);
-            res.send(result);
+            // res.send(result);
+            res.json({ status: "ok", body: result })
         })
         .catch((err) => {
             console.log(err);
+            res.json({ status: "error", error: err })
         });
 }
 

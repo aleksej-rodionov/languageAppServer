@@ -104,7 +104,7 @@ app.post('/auth/login', async (req, res) => {
             });
         //====================================================================================
 
-        return res.json({ status: 'ok', body: { accessToken: token, refreshToken: refreshToken }});
+        return res.json({ status: 'ok', body: { accessToken: token, accessTokenExp: 2400, refreshToken: refreshToken }});
 	}
 
 	res.json({ status: 'error', error: 'Invalid email/password (incorrect password)' });
