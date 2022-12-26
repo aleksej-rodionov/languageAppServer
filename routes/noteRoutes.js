@@ -31,7 +31,8 @@ function authenticateToken(req, res, next) {
         if (err) {
             // return res.sendStatus(403);
             // return res.status(403).json({ status: 'error', error: err.message })
-            return res.json({ status: 'error', error: err.message })
+            // return res.json({ status: 'error', error: err.message })
+            return res.status(401).send({ status: 'error', error: err.message })
         }
         req.user = user
         next() // we move on from this middleware

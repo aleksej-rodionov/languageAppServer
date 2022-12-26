@@ -3,9 +3,9 @@ require('dotenv').config()
 const express = require('express');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
-const User = require('./models/user');
 const bcrypt = require('bcrypt');
 const bodyParser = require('body-parser');
+const User = require('./models/user');
 const RefreshTokenModel = require('./models/refreshToken')
 
 const app = express();
@@ -112,8 +112,8 @@ app.post('/auth/login', async (req, res) => {
 
 
 //refresh-token
-app.post('/auth/refresh-token/:refresh_token', async (req, res) => {
-    const refreshToken = req.params.refresh_token;
+app.post('/auth/refresh/:refreshtoken', async (req, res) => {
+    const refreshToken = req.params.refreshtoken;
     if (refreshToken == null) return res.sendStatus(401);
 
     
@@ -129,8 +129,22 @@ app.post('/auth/refresh-token/:refresh_token', async (req, res) => {
 
         const accessToken = generateAccessToken({ email: user.email });
 
+        //=================================REFRESH REFRESHTOKEN WHEN REFRESH TOKEN===================================================
+        // const refreshToken = jwt.sign(user, process.env.REFRESH_TOKEN_SECRET);
+        // const refreshTokenEntity = new RefreshTokenModel({ token: refreshToken, user: user });
+        // refreshTokenEntity.save()
+        //     .then((result) => {
+        //         console.log("REFRESH_TOKEN STORED IN mongoDB:\n" + result);
+        //     })
+        //     .catch((err) => {
+        //         console.log("ERROR STORING REFRESH_TOKEN:\n" + err);
+        //     });
+        //=================================REFRESH REFRESHTOKEN WHEN REFRESH TOKEN===================================================
+
         // res.json({ accessToken: accessToken });
-        return res.json({ status: 'ok', body: accessToken });
+        // return res.json({ status: 'ok', body: accessToken });
+        // return res.json({ status: 'ok', body: { accessToken: accessToken, accessTokenExp: 15, refreshToken: refreshToken }});
+        return res.json({ status: 'ok', body: { accessToken: accessToken, accessTokenExp: 15, refreshToken: null }});
 
     });
     //====================================================================================

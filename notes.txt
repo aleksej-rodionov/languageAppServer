@@ -1,3 +1,5 @@
 next:
+0) Fix urlencoded parameter parsing to be able to encode refreshToken in the refresh-token endPoint url
 1) How to do so that :id, :email were mutable query parameters? (NOT user/:<id>, BUT user?id=<id>)
 2) Change Password func
+3) Return new RefreshToken (aside from AccessToken) in response to refresh-token call
