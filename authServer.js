@@ -112,25 +112,25 @@ app.post('/auth/login', async (req, res) => {
 
 
 //refresh-token
-app.post('/auth/refresh-token', async (req, res) => {
-    const refreshToken = req.body.token;
+app.post('/auth/refresh-token/:refresh_token', async (req, res) => {
+    const refreshToken = req.params.refresh_token;
     if (refreshToken == null) return res.sendStatus(401);
 
-    /**
-     * todo DELETE below and use mongoDB to store refreshTokens
-     */
-    // if (!refreshTokens.includes(refreshToken)) return res.sendStatus(403);
-    // jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
-    //     if (err) return res.sendStatus(403);
-    //     const accessToken = generateAccessToken({ email: user.email });
-    //     res.json({ accessToken: accessToken });
-    // });
+    
     if (!RefreshTokenModel.find({ token: refreshToken })) return res.sendStatus(403);
     jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
         console.log("Verifying RefreshTokenModel is fired...")
-        if (err) return res.sendStatus(403);
+
+        // if (err) return res.sendStatus(403);
+        if (err) {
+            res.status(403).json({ status: 'error', error: err.message })
+        }
+
         const accessToken = generateAccessToken({ email: user.email });
-        res.json({ accessToken: accessToken });
+
+        // res.json({ accessToken: accessToken });
+        return res.json({ status: 'ok', body: accessToken });
+
     });
     //====================================================================================
 
