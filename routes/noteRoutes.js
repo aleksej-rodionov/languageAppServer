@@ -28,7 +28,11 @@ function authenticateToken(req, res, next) {
     if(token == null) return res.sendStatus(401)
 
     jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
-        if (err) return res.sendStatus(403);
+        if (err) {
+            // return res.sendStatus(403);
+            // return res.status(403).json({ status: 'error', error: err.message })
+            return res.json({ status: 'error', error: err.message })
+        }
         req.user = user
         next() // we move on from this middleware
     })

@@ -104,7 +104,7 @@ app.post('/auth/login', async (req, res) => {
             });
         //====================================================================================
 
-        return res.json({ status: 'ok', body: { accessToken: token, accessTokenExp: 2400, refreshToken: refreshToken }});
+        return res.json({ status: 'ok', body: { accessToken: token, accessTokenExp: 15, refreshToken: refreshToken }});
 	}
 
 	res.json({ status: 'error', error: 'Invalid email/password (incorrect password)' });
@@ -119,11 +119,12 @@ app.post('/auth/refresh-token/:refresh_token', async (req, res) => {
     
     if (!RefreshTokenModel.find({ token: refreshToken })) return res.sendStatus(403);
     jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
-        console.log("Verifying RefreshTokenModel is fired...")
+        console.log("refreshToken = " + refreshToken);
 
         // if (err) return res.sendStatus(403);
         if (err) {
-            res.status(403).json({ status: 'error', error: err.message })
+            // return res.status(403).json({ status: 'error', error: err.message })
+            return res.json({ status: 'error', error: err.message })
         }
 
         const accessToken = generateAccessToken({ email: user.email });
@@ -181,5 +182,5 @@ app.use((req, res) => {
 
 //===========================FUNCTIONS============================
 function generateAccessToken(user) {
-    return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '40m' });
+    return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '15s' });
 }

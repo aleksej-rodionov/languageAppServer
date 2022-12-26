@@ -51,15 +51,6 @@ const note_by_id = (req, res) => {
     const userEmail = req.user.email;
     console.log("userEmail = " + userEmail)
 
-    // const note = Note.findById(noteId)
-    // console.log("XUJ VO RTU = " + note);
-
-    // if (note.email === userEmail) {
-    //     res.json({ status: 'ok', body: note})
-    // } else {
-    //     res.json({ status: 'error', error: "You don\'t have access to this note" })
-    // }
-
     Note.findOne({ _id: noteId })
         .then((note) => {
             console.log(note);
