@@ -28,6 +28,7 @@ Content-Type: application/json
 ###
 # POST http://localhost:4000/auth/refresh/:refreshtoken
 POST http://localhost:4000/auth/refresh/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzllOTMwN2M2MzUxMWUwNzllNjRkNjQiLCJlbWFpbCI6InJvZGlvbm92anI5MUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRqYXJRWG52UFkzRkcyS1RaWGpaVXBlcGhsOFkuOHVLNVJMQ3dobkhzRS9DQ2xHcC5ERlQxLiIsImNyZWF0ZWRBdCI6IjIwMjItMTItMThUMDQ6MTE6NTEuMzA3WiIsInVwZGF0ZWRBdCI6IjIwMjItMTItMThUMDQ6MTE6NTEuMzA3WiIsIl9fdiI6MCwiaWF0IjoxNjcyMDY3NjM2fQ.c1EGWnElOGQ-yw3TigXAmwS24mt0IeRAdXnvPEpMbxw
+Content-Type: application/json
 
 
 ###

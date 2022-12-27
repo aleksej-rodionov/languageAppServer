@@ -18,7 +18,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then((result) => { app.listen(4000) })
     .catch((err) => { console.log(err) });
 
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use(express.urlencoded({ extended: false }));
@@ -29,8 +29,6 @@ app.use(morgan('dev'));
 
 
 
-
-// let refreshTokens = [] // todo DELETE and store refreshTokens in mongoDB
 
 //=================AUTH ENDPOINTS START===================
 
@@ -90,10 +88,6 @@ app.post('/auth/login', async (req, res) => {
         const token = generateAccessToken(user);
         const refreshToken = jwt.sign(user, process.env.REFRESH_TOKEN_SECRET);
 
-        /**
-         * todo DELETE below and store refreshToken in mongoDB
-         */
-        // refreshTokens.push(refreshToken);
         const refreshTokenEntity = new RefreshTokenModel({ token: refreshToken, user: user });
         refreshTokenEntity.save()
             .then((result) => {
@@ -102,7 +96,6 @@ app.post('/auth/login', async (req, res) => {
             .catch((err) => {
                 console.log("ERROR STORING REFRESH_TOKEN:\n" + err);
             });
-        //====================================================================================
 
         return res.json({ status: 'ok', body: { accessToken: token, accessTokenExp: 15, refreshToken: refreshToken }});
 	}
@@ -112,8 +105,8 @@ app.post('/auth/login', async (req, res) => {
 
 
 //refresh-token
-app.post('/auth/refresh/:refreshtoken', async (req, res) => {
-    const refreshToken = req.params.refreshtoken;
+app.post('/auth/refresh/', async (req, res) => {
+    const refreshToken = req.body.refreshtoken;
     if (refreshToken == null) return res.sendStatus(401);
 
     
@@ -121,9 +114,7 @@ app.post('/auth/refresh/:refreshtoken', async (req, res) => {
     jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
         console.log("refreshToken = " + refreshToken);
 
-        // if (err) return res.sendStatus(403);
         if (err) {
-            // return res.status(403).json({ status: 'error', error: err.message })
             return res.json({ status: 'error', error: err.message })
         }
 
@@ -141,9 +132,6 @@ app.post('/auth/refresh/:refreshtoken', async (req, res) => {
         //     });
         //=================================REFRESH REFRESHTOKEN WHEN REFRESH TOKEN===================================================
 
-        // res.json({ accessToken: accessToken });
-        // return res.json({ status: 'ok', body: accessToken });
-        // return res.json({ status: 'ok', body: { accessToken: accessToken, accessTokenExp: 15, refreshToken: refreshToken }});
         return res.json({ status: 'ok', body: { accessToken: accessToken, accessTokenExp: 15, refreshToken: null }});
 
     });
@@ -161,11 +149,6 @@ app.post('/auth/change-password', async (req, res) => {
 //logout
 app.delete('/auth/logout', (req, res) => {
 
-    /**
-     * todo DELETE below and use mongoDB to store refreshTokens
-     */
-    // refreshTokens = refreshTokens.filter(token =>token !== req.body.token);
-    // res.sendStatus(204);
     RefreshTokenModel.findOneAndDelete({ token: req.body.token })
         .then((result) => {
             console.log("REFRESH_TOKEN SUCCESSFULLY DELETED:\n" + result);
@@ -180,7 +163,6 @@ app.delete('/auth/logout', (req, res) => {
             console.log("ERROR DELETING REFRESH_TOKEN:\n" + err);
             res.json({ status: "error", error: err });
         });
-    //====================================================================================
 
 });
 
