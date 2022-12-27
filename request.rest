@@ -29,10 +29,14 @@ Content-Type: application/json
      "password": "govnojed"
 }
 
+
 ###
-# POST http://localhost:4000/auth/refresh/:refreshtoken
-POST http://localhost:4000/auth/refresh/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzllOTMwN2M2MzUxMWUwNzllNjRkNjQiLCJlbWFpbCI6InJvZGlvbm92anI5MUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRqYXJRWG52UFkzRkcyS1RaWGpaVXBlcGhsOFkuOHVLNVJMQ3dobkhzRS9DQ2xHcC5ERlQxLiIsImNyZWF0ZWRBdCI6IjIwMjItMTItMThUMDQ6MTE6NTEuMzA3WiIsInVwZGF0ZWRBdCI6IjIwMjItMTItMThUMDQ6MTE6NTEuMzA3WiIsIl9fdiI6MCwiaWF0IjoxNjcyMDY3NjM2fQ.c1EGWnElOGQ-yw3TigXAmwS24mt0IeRAdXnvPEpMbxw
+POST http://localhost:4000/auth/refresh
 Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ExNWU4ZjNiMzdlN2Q3ZDdkZjU5OTEiLCJlbWFpbCI6InJvZGlvbm92anI5OTFAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkZGJSamw5OWp1VWZvS3Q1WDRvbnRkLjh3R0VQc2xXdDdpTFExN0NtNnh6TVRFNVNwQ2hBRXEiLCJjcmVhdGVkQXQiOiIyMDIyLTEyLTIwVDA3OjA0OjQ3LjM3NVoiLCJ1cGRhdGVkQXQiOiIyMDIyLTEyLTIwVDA3OjA0OjQ3LjM3NVoiLCJfX3YiOjAsImlhdCI6MTY3MTUyMjgyOX0.-Gbsb-i32OWQURjHt5q-1EtiFUDqeSN0q57uRJ-gF4E"
+}
 
 
 ###
@@ -47,9 +51,8 @@ Content-Type: application/json
 
 
 ######################################### NOTES #########################################
-# GET http://localhost:3000/notes
 GET http://localhost:3000/notes
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvZGlvbm92anI5MUBnbWFpbC5jb20iLCJpYXQiOjE2NzIwNTgxNDcsImV4cCI6MTY3MjA1ODE4N30.5FIn_zuKPZQoe3Hbd4CP5jLHKbFF79S-8kLXWsAnqss
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzllOTMwN2M2MzUxMWUwNzllNjRkNjQiLCJlbWFpbCI6InJvZGlvbm92anI5MUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRqYXJRWG52UFkzRkcyS1RaWGpaVXBlcGhsOFkuOHVLNVJMQ3dobkhzRS9DQ2xHcC5ERlQxLiIsImNyZWF0ZWRBdCI6IjIwMjItMTItMThUMDQ6MTE6NTEuMzA3WiIsInVwZGF0ZWRBdCI6IjIwMjItMTItMThUMDQ6MTE6NTEuMzA3WiIsIl9fdiI6MCwiaWF0IjoxNjcyMTU0NTg4LCJleHAiOjE2NzIxNTYzODh9.Ocgq6upzgReQUdysEbWMvD2roWacshx51VAxx_Vasw8
 
 
 ###
@@ -58,13 +61,29 @@ Content-Type: application/json
 
 {
     "email": "rodionovjr91@gmail.com",
-    "text": "Ty pidor" 
+    "text": "Pacanov jebut xujami" 
 }
 
 
 ###
-GET http://localhost:3000/notes/639eb585b227f653afb52ba0
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzllOTMwN2M2MzUxMWUwNzllNjRkNjQiLCJlbWFpbCI6InJvZGlvbm92anI5MUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRqYXJRWG52UFkzRkcyS1RaWGpaVXBlcGhsOFkuOHVLNVJMQ3dobkhzRS9DQ2xHcC5ERlQxLiIsImNyZWF0ZWRBdCI6IjIwMjItMTItMThUMDQ6MTE6NTEuMzA3WiIsInVwZGF0ZWRBdCI6IjIwMjItMTItMThUMDQ6MTE6NTEuMzA3WiIsIl9fdiI6MCwiaWF0IjoxNjcxNjQyNTUxLCJleHAiOjE2NzE2NDQ5NTF9.vzdUoSFTYpLmoQXAc6USVYFddIEnZbI-b9mURw3auWU
+GET http://localhost:3000/notes/639eb46dd1f1ffe93ec9ee52
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzllOTMwN2M2MzUxMWUwNzllNjRkNjQiLCJlbWFpbCI6InJvZGlvbm92anI5MUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRqYXJRWG52UFkzRkcyS1RaWGpaVXBlcGhsOFkuOHVLNVJMQ3dobkhzRS9DQ2xHcC5ERlQxLiIsImNyZWF0ZWRBdCI6IjIwMjItMTItMThUMDQ6MTE6NTEuMzA3WiIsInVwZGF0ZWRBdCI6IjIwMjItMTItMThUMDQ6MTE6NTEuMzA3WiIsIl9fdiI6MCwiaWF0IjoxNjcyMTU0NTg4LCJleHAiOjE2NzIxNTYzODh9.Ocgq6upzgReQUdysEbWMvD2roWacshx51VAxx_Vasw8
+
+
+###
+PUT http://localhost:3000/notes/639eb46dd1f1ffe93ec9ee52
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzllOTMwN2M2MzUxMWUwNzllNjRkNjQiLCJlbWFpbCI6InJvZGlvbm92anI5MUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRqYXJRWG52UFkzRkcyS1RaWGpaVXBlcGhsOFkuOHVLNVJMQ3dobkhzRS9DQ2xHcC5ERlQxLiIsImNyZWF0ZWRBdCI6IjIwMjItMTItMThUMDQ6MTE6NTEuMzA3WiIsInVwZGF0ZWRBdCI6IjIwMjItMTItMThUMDQ6MTE6NTEuMzA3WiIsIl9fdiI6MCwiaWF0IjoxNjcyMTU0NTg4LCJleHAiOjE2NzIxNTYzODh9.Ocgq6upzgReQUdysEbWMvD2roWacshx51VAxx_Vasw8
+
+{
+    "email": "rodionovjr91@gmail.com",
+    "text": "Ja obezjana" 
+}
+
+
+###
+DELETE http://localhost:3000/notes/639eb46dd1f1ffe93ec9ee52
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzllOTMwN2M2MzUxMWUwNzllNjRkNjQiLCJlbWFpbCI6InJvZGlvbm92anI5MUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRqYXJRWG52UFkzRkcyS1RaWGpaVXBlcGhsOFkuOHVLNVJMQ3dobkhzRS9DQ2xHcC5ERlQxLiIsImNyZWF0ZWRBdCI6IjIwMjItMTItMThUMDQ6MTE6NTEuMzA3WiIsInVwZGF0ZWRBdCI6IjIwMjItMTItMThUMDQ6MTE6NTEuMzA3WiIsIl9fdiI6MCwiaWF0IjoxNjcyMTU0NTg4LCJleHAiOjE2NzIxNTYzODh9.Ocgq6upzgReQUdysEbWMvD2roWacshx51VAxx_Vasw8
 
 
 
@@ -135,12 +154,11 @@ Content-Type: application/json
 
 
 ###
-# PUT http://localhost:3000/englishcategories/:id
-PUT http://localhost:3000/englishcategories/639abb3b72ae0bb0e6411721
+PUT http://localhost:3000/englishcategories/639abb1972ae0bb0e641171f
 Content-Type: application/json
 
 {
-    "catname": "Verbs"
+    "catname": "Nouns"
 }
 
 

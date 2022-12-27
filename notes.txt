@@ -1,4 +1,5 @@
 next:
+0) Write error codes everywhere
 1) How to do so that :id, :email were mutable query parameters? (NOT user/:<id>, BUT user?id=<id>)
 2) Change Password func
 3) Return new RefreshToken (aside from AccessToken) in response to refresh-token call
