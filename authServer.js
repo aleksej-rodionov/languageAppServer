@@ -167,6 +167,20 @@ app.delete('/auth/logout', (req, res) => {
 });
 
 
+//delete all refreshTokens from DB
+app.delete('/auth/logout-all', (req, res) => {
+
+    RefreshTokenModel.remove()
+        .then((result) => {
+            console.log(result);
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+
+});
+
+
 
 //=================AUTH ENDPOINTS END===================
 

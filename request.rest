@@ -2,12 +2,16 @@
 
 
 ######################################### AUTH #########################################
+DELETE http://localhost:4000/auth/logout-all
+
+
+###
 POST http://localhost:4000/auth/register
 Content-Type: application/json
 
 {
-    "email": "rodionovjr991@gmail.com",
-    "password": "password3"
+    "email": "lil@gmail.com",
+    "password": "lil9999"
 }
 
 
