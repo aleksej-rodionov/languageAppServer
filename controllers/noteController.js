@@ -7,10 +7,10 @@ const note_create = (req, res) => {
 
     note.save()
         .then((result) => {
-            res.send(result);
+            res.json({ status: 'ok', body: result });
         })
         .catch((err) => {
-            console.log(err);
+            res.json({ status: 'error', body: err });
         });
 }
 
@@ -88,7 +88,7 @@ const note_delete = (req, res) => {
             if(note.email == userEmail) {
                 Note.findByIdAndDelete(noteId, req.body)
                     .then((result) => {
-                        res.json({ status: 'ok', body: "Successfully deleted" });
+                        res.json({ status: 'ok', body: result });
                     })
                     .catch((err) => {
                         res.json({ status: 'error', error: err })
