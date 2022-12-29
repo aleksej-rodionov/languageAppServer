@@ -48,7 +48,7 @@ const note_by_id = (req, res) => {
             }
         })
         .catch((err) => {
-            console.log(err);
+            res.json({ status: 'error', error: err });
         });
 }
 

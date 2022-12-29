@@ -13,17 +13,17 @@ const user_index = (req, res) => {
         })
 }
 
-const user_details = (req, res) => {
-    const id = req.params.id;
-    User.findById(id)
-        .then((result) => {
-            // console.log(result);
-            res.send(result);
-        })
-        .catch((err) => {
-            console.log(err);
-        });
-}
+// const user_details = (req, res) => {
+//     const id = req.params.id;
+//     User.findById(id)
+//         .then((result) => {
+//             // console.log(result);
+//             res.send(result);
+//         })
+//         .catch((err) => {
+//             console.log(err);
+//         });
+// }
 
 const user_testtext = (req, res) => {
     const id = req.params.id;
@@ -61,14 +61,28 @@ const user_delete = (req, res) => {
     res.json({ status: error, error: "Testtext not found" })
 }
 
+const user_current = (req, res) => {
+    const userEmail = req.user.email;
+    console.log(userEmail);
+
+    User.findOne({ email: userEmail })
+        .then((result) => {
+            res.json({ status: "ok", body: result });
+        })
+        .catch((err) => {
+            res.json({ status: 'error', error: err });
+        });
+}
+
 
 
 module.exports = {
     user_index,
-    user_details,
+    // user_details,
     user_testtext,
     user_update,
-    user_delete
+    user_delete,
+    user_current
 }
 
 
