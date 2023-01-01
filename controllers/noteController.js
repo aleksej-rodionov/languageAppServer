@@ -8,10 +8,10 @@ const note_create = (req, res) => {
     note.save()
         .then((result) => {
             console.log(result);
-            res.json({ status: 'ok', body: result });
+            res.status(200).json({ status: 'ok', body: result });
         })
         .catch((err) => {
-            res.json({ status: 'error', body: err });
+            res.status(500).json({ status: 'error', body: err });
         });
 }
 
@@ -64,20 +64,20 @@ const note_update = (req, res) => { // todo make 1 db request instead of 2
                     Note.findOneAndUpdate({ _id: noteId }, req.body, { new: true })
                         .then((result) => {
                             console.log(result);
-                            res.json({ status: 'ok', body: result });
+                            res.status(200).json({ status: 'ok', body: result });
                         })
                         .catch((err) => {
-                            res.json({ status: 'error', error: err })
+                            res.status(500).json({ status: 'error', error: err })
                         })
                 } else {
-                    res.json({ status: 'error', error: "You don\'t have access to this note" })
+                    res.status(403).json({ status: 'error', error: "You don\'t have access to this note" })
                 }
             } else {
-                res.json({ status: 'error', error: "Note not found" });
+                res.status(404).json({ status: 'error', error: "Note not found" });
             }
         })
         .catch((err) => {
-            res.json({ status: 'error', error: err })
+            res.status(500).json({ status: 'error', error: err })
         });
 }
 
