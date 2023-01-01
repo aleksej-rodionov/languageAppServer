@@ -7,6 +7,7 @@ const note_create = (req, res) => {
 
     note.save()
         .then((result) => {
+            console.log(result);
             res.json({ status: 'ok', body: result });
         })
         .catch((err) => {
@@ -62,6 +63,7 @@ const note_update = (req, res) => { // todo make 1 db request instead of 2
                 if(note.email == userEmail) {
                     Note.findOneAndUpdate({ _id: noteId }, req.body, { new: true })
                         .then((result) => {
+                            console.log(result);
                             res.json({ status: 'ok', body: result });
                         })
                         .catch((err) => {

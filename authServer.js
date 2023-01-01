@@ -147,7 +147,7 @@ app.post('/auth/change-password', async (req, res) => {
 
 
 //logout
-app.delete('/auth/logout', (req, res) => {
+app.post('/auth/logout', (req, res) => {
 
     RefreshTokenModel.findOneAndDelete({ token: req.body.token })
         .then((result) => {
