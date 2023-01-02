@@ -9,9 +9,11 @@ const router = express.Router();
 router.get('/', userController.user_index);
 // router.get('/:id', userController.user_details);
 router.get('/testtext/:id', authenticateToken, userController.user_testtext);
-router.put('/:id', userController.user_update);
+// router.put('/:id', userController.user_update);
 router.delete('/:id', userController.user_delete);
+
 router.get('/current', authenticateToken, userController.user_current);
+router.put('/change-password', authenticateToken, userController.change_password);
 
 module.exports = router;
 

@@ -38,7 +38,6 @@ app.use('/englishwords', englishWordRoutes);
 app.use('/englishcategories', englishCategoryRoutes);
 
 
-
 app.use((req, res) => {
     res.status(404).json({ error: 'Nothing found' })
 });

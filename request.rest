@@ -26,7 +26,18 @@ Content-Type: application/json
 
 {
      "email": "rodionovjr91@gmail.com",
-     "password": "00000pp"
+     "password": "00000ppp"
+}
+
+
+###
+PUT http://localhost:3000/users/change-password
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzllOTMwN2M2MzUxMWUwNzllNjRkNjQiLCJlbWFpbCI6InJvZGlvbm92anI5MUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRxMU1RcUdRTUguZ1NpQ0N1dHNnSGx1eFRQWk5zWlV0aVZZNnd0MWxheHJ6ZHJab0RFWTdaaSIsImNyZWF0ZWRBdCI6IjIwMjItMTItMThUMDQ6MTE6NTEuMzA3WiIsInVwZGF0ZWRBdCI6IjIwMjMtMDEtMDJUMTk6MTA6MzUuNDYxWiIsIl9fdiI6MCwiaWF0IjoxNjcyNjg5MDAzLCJleHAiOjE2NzI2OTA4MDN9.LMbcSHqi13DOHSccbggU6EJVamNtmyDGD4kHKMB7B_I
+
+{
+    "oldpassword": "lol000",
+    "newpassword": "lol999"
 }
 
 
@@ -36,18 +47,6 @@ Content-Type: application/json
 
 {
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ExNWU4ZjNiMzdlN2Q3ZDdkZjU5OTEiLCJlbWFpbCI6InJvZGlvbm92anI5OTFAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkZGJSamw5OWp1VWZvS3Q1WDRvbnRkLjh3R0VQc2xXdDdpTFExN0NtNnh6TVRFNVNwQ2hBRXEiLCJjcmVhdGVkQXQiOiIyMDIyLTEyLTIwVDA3OjA0OjQ3LjM3NVoiLCJ1cGRhdGVkQXQiOiIyMDIyLTEyLTIwVDA3OjA0OjQ3LjM3NVoiLCJfX3YiOjAsImlhdCI6MTY3MTUyMjgyOX0.-Gbsb-i32OWQURjHt5q-1EtiFUDqeSN0q57uRJ-gF4E"
-}
-
-
-###
-POST http://localhost:4000/auth/change-password
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzllOTMwN2M2MzUxMWUwNzllNjRkNjQiLCJlbWFpbCI6InJvZGlvbm92anI5MUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRiUVQ1ZEg0ZS9qS1hjWHpFTmRhaWRPdGd3TXRlR0FId1ZKYS9oNXB5ZHN5V3g4UnkyTjhueSIsImNyZWF0ZWRBdCI6IjIwMjItMTItMThUMDQ6MTE6NTEuMzA3WiIsInVwZGF0ZWRBdCI6IjIwMjMtMDEtMDJUMTM6MTU6MjEuMjg5WiIsIl9fdiI6MCwiaWF0IjoxNjcyNjcwNDM3LCJleHAiOjE2NzI2NzIyMzd9.lY4mKA1AvlTZwt0DAr3UDn8MSxyDu31Yq7w_va1xhfg
-
-
-{
-    "oldpassword": "00000p",
-    "newpassword": "00000ppp"
 }
 
 
