@@ -182,7 +182,7 @@ app.post('/auth/change-password', async (req, res) => {
 //logout
 app.post('/auth/logout', (req, res) => {
 
-    RefreshTokenModel.findOneAndDelete({ token: req.body.token })
+    RefreshTokenModel.findOneAndDelete({ token: req.body.refreshtoken })
         .then((result) => {
             console.log("REFRESH_TOKEN SUCCESSFULLY DELETED:\n" + result);
             if (!result) {
