@@ -7,10 +7,11 @@ const router = express.Router();
 
 
 router.post('/', noteController.note_create);
-router.get('/', authenticateToken, noteController.note_index_by_user);
-router.get('/:noteid', authenticateToken, noteController.note_by_id); // todo use const request = require('request');
-router.put('/:noteId', authenticateToken, noteController.note_update); // todo use queries also
-router.delete('/:noteId', authenticateToken, noteController.note_delete); // todo same thing
+router.get('/index', authenticateToken, noteController.note_index_by_user);
+router.get('/details/:noteid', authenticateToken, noteController.note_by_id);
+router.put('/:noteid', authenticateToken, noteController.note_update);
+router.delete('/:noteid', authenticateToken, noteController.note_delete);
+router.get('/search', authenticateToken, noteController.note_search);
 
 module.exports = router;
 

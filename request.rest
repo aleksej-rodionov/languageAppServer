@@ -26,18 +26,7 @@ Content-Type: application/json
 
 {
      "email": "rodionovjr91@gmail.com",
-     "password": "00000ppp"
-}
-
-
-###
-PUT http://localhost:3000/users/change-password
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzllOTMwN2M2MzUxMWUwNzllNjRkNjQiLCJlbWFpbCI6InJvZGlvbm92anI5MUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRxMU1RcUdRTUguZ1NpQ0N1dHNnSGx1eFRQWk5zWlV0aVZZNnd0MWxheHJ6ZHJab0RFWTdaaSIsImNyZWF0ZWRBdCI6IjIwMjItMTItMThUMDQ6MTE6NTEuMzA3WiIsInVwZGF0ZWRBdCI6IjIwMjMtMDEtMDJUMTk6MTA6MzUuNDYxWiIsIl9fdiI6MCwiaWF0IjoxNjcyNjg5MDAzLCJleHAiOjE2NzI2OTA4MDN9.LMbcSHqi13DOHSccbggU6EJVamNtmyDGD4kHKMB7B_I
-
-{
-    "oldpassword": "lol000",
-    "newpassword": "lol999"
+     "password": "lol999"
 }
 
 
@@ -62,8 +51,8 @@ Content-Type: application/json
 
 
 ######################################### NOTES #########################################
-GET http://localhost:3000/notes
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzllOTMwN2M2MzUxMWUwNzllNjRkNjQiLCJlbWFpbCI6InJvZGlvbm92anI5MUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRqYXJRWG52UFkzRkcyS1RaWGpaVXBlcGhsOFkuOHVLNVJMQ3dobkhzRS9DQ2xHcC5ERlQxLiIsImNyZWF0ZWRBdCI6IjIwMjItMTItMThUMDQ6MTE6NTEuMzA3WiIsInVwZGF0ZWRBdCI6IjIwMjItMTItMThUMDQ6MTE6NTEuMzA3WiIsIl9fdiI6MCwiaWF0IjoxNjcyMzM3MjQ4LCJleHAiOjE2NzIzMzkwNDh9.NGO6C-Djg3SLntAPOgQlnfcYc0Yhs9jezlEAFuaKW_E
+GET http://localhost:3000/notes/index
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzllOTMwN2M2MzUxMWUwNzllNjRkNjQiLCJlbWFpbCI6InJvZGlvbm92anI5MUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRzT1lhWHE0NEVYLkczYlR2dG1mMGVlZ3BONnNPNjFjWHNPakVRZDJXSUVabFUucWU2UG1LLiIsImNyZWF0ZWRBdCI6IjIwMjItMTItMThUMDQ6MTE6NTEuMzA3WiIsInVwZGF0ZWRBdCI6IjIwMjMtMDEtMDJUMjA6MDU6MTkuNzI1WiIsIl9fdiI6MCwiaWF0IjoxNjcyNjkxODYwLCJleHAiOjE2NzI2OTM2NjB9.jGOKpr3cfyM6MF6mnOYOUzKzfQFf5M0_r5OIbDxuEeg
 
 
 ###
@@ -72,7 +61,7 @@ Content-Type: application/json
 
 {
     "email": "rodionovjr91@gmail.com",
-    "text": "Sosu xuj" 
+    "text": "da nee, eto nasi pacany" 
 }
 
 
@@ -97,11 +86,27 @@ DELETE http://localhost:3000/notes/63ad89b5adf02366d8d7082b
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzllOTMwN2M2MzUxMWUwNzllNjRkNjQiLCJlbWFpbCI6InJvZGlvbm92anI5MUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRqYXJRWG52UFkzRkcyS1RaWGpaVXBlcGhsOFkuOHVLNVJMQ3dobkhzRS9DQ2xHcC5ERlQxLiIsImNyZWF0ZWRBdCI6IjIwMjItMTItMThUMDQ6MTE6NTEuMzA3WiIsInVwZGF0ZWRBdCI6IjIwMjItMTItMThUMDQ6MTE6NTEuMzA3WiIsIl9fdiI6MCwiaWF0IjoxNjcyMzE5ODk4LCJleHAiOjE2NzIzMjE2OTh9.pnvW_lu7BaI00GwMPtM4fOO_9RI7cLYMtVtKcr-a2Es
 
 
+###
+GET http://localhost:3000/notes/search?query=nasi
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzllOTMwN2M2MzUxMWUwNzllNjRkNjQiLCJlbWFpbCI6InJvZGlvbm92anI5MUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRzT1lhWHE0NEVYLkczYlR2dG1mMGVlZ3BONnNPNjFjWHNPakVRZDJXSUVabFUucWU2UG1LLiIsImNyZWF0ZWRBdCI6IjIwMjItMTItMThUMDQ6MTE6NTEuMzA3WiIsInVwZGF0ZWRBdCI6IjIwMjMtMDEtMDJUMjA6MDU6MTkuNzI1WiIsIl9fdiI6MCwiaWF0IjoxNjcyNjkxODYwLCJleHAiOjE2NzI2OTM2NjB9.jGOKpr3cfyM6MF6mnOYOUzKzfQFf5M0_r5OIbDxuEeg
+
 
 
 ######################################### USERS #########################################
 GET http://localhost:3000/users/current
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzllOTMwN2M2MzUxMWUwNzllNjRkNjQiLCJlbWFpbCI6InJvZGlvbm92anI5MUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRqYXJRWG52UFkzRkcyS1RaWGpaVXBlcGhsOFkuOHVLNVJMQ3dobkhzRS9DQ2xHcC5ERlQxLiIsImNyZWF0ZWRBdCI6IjIwMjItMTItMThUMDQ6MTE6NTEuMzA3WiIsInVwZGF0ZWRBdCI6IjIwMjItMTItMThUMDQ6MTE6NTEuMzA3WiIsIl9fdiI6MCwiaWF0IjoxNjcyMzM3MjQ4LCJleHAiOjE2NzIzMzkwNDh9.NGO6C-Djg3SLntAPOgQlnfcYc0Yhs9jezlEAFuaKW_E
+
+
+###
+PUT http://localhost:3000/users/change-password
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzllOTMwN2M2MzUxMWUwNzllNjRkNjQiLCJlbWFpbCI6InJvZGlvbm92anI5MUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRxMU1RcUdRTUguZ1NpQ0N1dHNnSGx1eFRQWk5zWlV0aVZZNnd0MWxheHJ6ZHJab0RFWTdaaSIsImNyZWF0ZWRBdCI6IjIwMjItMTItMThUMDQ6MTE6NTEuMzA3WiIsInVwZGF0ZWRBdCI6IjIwMjMtMDEtMDJUMTk6MTA6MzUuNDYxWiIsIl9fdiI6MCwiaWF0IjoxNjcyNjg5MDAzLCJleHAiOjE2NzI2OTA4MDN9.LMbcSHqi13DOHSccbggU6EJVamNtmyDGD4kHKMB7B_I
+
+{
+    "oldpassword": "lol000",
+    "newpassword": "lol999"
+}
+
 
 ###
 PUT http://localhost:3000/users/:id

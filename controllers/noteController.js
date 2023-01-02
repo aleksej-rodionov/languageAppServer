@@ -104,6 +104,27 @@ const note_delete = (req, res) => {
         });
 }
 
+const note_search = (req, res) => {
+    const query = req.query.query
+    const userEmail = req.user.email;
+
+    Note.find(
+            {
+                email: userEmail,
+                text: { $regex: query }
+            }
+        )
+        .then((result) => {
+            console.log(result);
+            // res.send(result);
+            res.json({ status: "ok", body: result })
+        })
+        .catch((err) => {
+            console.log(err);
+            res.json({ status: "error", error: err })
+        });
+}
+
 
 
 module.exports = {
@@ -111,5 +132,6 @@ module.exports = {
     note_index_by_user,
     note_by_id,
     note_update,
-    note_delete
+    note_delete,
+    note_search
 }
