@@ -91,7 +91,7 @@ app.post('/auth/login', async (req, res) => {
         const refreshTokenEntity = new RefreshTokenModel({ token: refreshToken, user: user });
         refreshTokenEntity.save()
             .then((result) => {
-                console.log("REFRESH_TOKEN STORED IN mongoDB:\n" + result);
+                console.log("REFRESH_TOKEN STORED IN mongoDB:\n" /*+ result*/);
             })
             .catch((err) => {
                 console.log("ERROR STORING REFRESH_TOKEN:\n" + err);
@@ -142,7 +142,40 @@ app.post('/auth/refresh/', async (req, res) => {
 
 //change-password
 app.post('/auth/change-password', async (req, res) => {
-    // todo
+    const { newpassword: plainTextPassword } = req.body
+    if (!plainTextPassword || typeof plainTextPassword !== 'string') {
+		return res.status(400).json({ status: 'error', error: 'Invalid new password' })
+	}
+	if (plainTextPassword.length < 6) {
+		return res.status(400).json({
+			status: 'error',
+			error: 'New password too small. Should be at least 6 characters'
+		})
+	}
+    const hashedNewPassword = await bcrypt.hash(req.body.newpassword, 10);
+    console.log(hashedNewPassword);
+
+    const authHeader = req.headers['authorization'];
+    const token = authHeader && authHeader.split(' ')[1];
+    if(token == null) return res.sendStatus(401).send({ status: 'error', error: 'You\'re not authorized' });
+    jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, async (err, user) => {
+        if (err) {
+            return res.status(401).send({ status: 'error', error: err.message });
+        }
+        req.user = user;
+
+        // todo findAndUpdate user with new password
+        await User.updateOne({ _id: user._id }, {
+            $set: { password: hashedNewPassword }
+        }, { new: true })
+            .then((result) => {
+                console.log('CHANGE PASSWORD RESULT = \nresult')
+                return res.status(200).send({ status: 'ok', body: result })
+            })
+            .catch((err) => {
+                return res.status(500).send({ status: 'error', error: err.message })
+            });
+    });
 });
 
 

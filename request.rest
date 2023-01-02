@@ -26,7 +26,7 @@ Content-Type: application/json
 
 {
      "email": "rodionovjr91@gmail.com",
-     "password": "govnojed"
+     "password": "00000pp"
 }
 
 
@@ -40,11 +40,22 @@ Content-Type: application/json
 
 
 ###
+POST http://localhost:4000/auth/change-password
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzllOTMwN2M2MzUxMWUwNzllNjRkNjQiLCJlbWFpbCI6InJvZGlvbm92anI5MUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRqYXJRWG52UFkzRkcyS1RaWGpaVXBlcGhsOFkuOHVLNVJMQ3dobkhzRS9DQ2xHcC5ERlQxLiIsImNyZWF0ZWRBdCI6IjIwMjItMTItMThUMDQ6MTE6NTEuMzA3WiIsInVwZGF0ZWRBdCI6IjIwMjItMTItMThUMDQ6MTE6NTEuMzA3WiIsIl9fdiI6MCwiaWF0IjoxNjcyNjYzODg3LCJleHAiOjE2NzI2NjU2ODd9.Lx5RUEQLTi-3gW10cqa8v8aXcvdQR8ZxdztJIy-ngjw
+
+
+{
+    "newpassword": "00000pp"
+}
+
+
+###
 DELETE http://localhost:4000/auth/logout
 Content-Type: application/json
 
 {
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ExNWU4ZjNiMzdlN2Q3ZDdkZjU5OTEiLCJlbWFpbCI6InJvZGlvbm92anI5OTFAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkZGJSamw5OWp1VWZvS3Q1WDRvbnRkLjh3R0VQc2xXdDdpTFExN0NtNnh6TVRFNVNwQ2hBRXEiLCJjcmVhdGVkQXQiOiIyMDIyLTEyLTIwVDA3OjA0OjQ3LjM3NVoiLCJ1cGRhdGVkQXQiOiIyMDIyLTEyLTIwVDA3OjA0OjQ3LjM3NVoiLCJfX3YiOjAsImlhdCI6MTY3MTUyMjgyOX0.-Gbsb-i32OWQURjHt5q-1EtiFUDqeSN0q57uRJ-gF4E"
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzllOTMwN2M2MzUxMWUwNzllNjRkNjQiLCJlbWFpbCI6InJvZGlvbm92anI5MUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRvQjA4cGN2WDBPR29velhVdW4ybDhPSjJSeFpWTWRmSGc1QnVvSk9BRlVxNlF1Z1JTVzVKNiIsImNyZWF0ZWRBdCI6IjIwMjItMTItMThUMDQ6MTE6NTEuMzA3WiIsInVwZGF0ZWRBdCI6IjIwMjMtMDEtMDJUMTI6NTg6NDIuMjExWiIsIl9fdiI6MCwiaWF0IjoxNjcyNjY0NDg4fQ.R9gc2NgYWrD933WEyIgq54qgo5nYOtptMIkrNQ9zSi0"
 }
 
 

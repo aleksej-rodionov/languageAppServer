@@ -23,16 +23,16 @@ module.exports = router;
  * related to handling particular-user-related data in DB
  */
 function authenticateToken(req, res, next) {
-    const authHeader = req.headers['authorization']
-    const token = authHeader && authHeader.split(' ')[1] // cause the Header looks like "Bearer <TOKEN>"
-    if(token == null) return res.sendStatus(401)
+    const authHeader = req.headers['authorization'];
+    const token = authHeader && authHeader.split(' ')[1]; // cause the Header looks like "Bearer <TOKEN>"
+    if(token == null) return res.sendStatus(401);
 
     jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
         if (err) {
             // return res.status(403).json({ status: 'error', error: err.message })
             return res.status(401).send({ status: 'error', error: err.message })
         }
-        req.user = user
-        next() // we move on from this middleware
-    })
+        req.user = user;
+        next(); // we move on from this middleware
+    });
 }
