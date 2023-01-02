@@ -142,18 +142,10 @@ app.post('/auth/refresh/', async (req, res) => {
 
 //change-password
 app.post('/auth/change-password', async (req, res) => {
-    const { newpassword: plainTextPassword } = req.body
-    if (!plainTextPassword || typeof plainTextPassword !== 'string') {
-		return res.status(400).json({ status: 'error', error: 'Invalid new password' })
-	}
-	if (plainTextPassword.length < 6) {
-		return res.status(400).json({
-			status: 'error',
-			error: 'New password too small. Should be at least 6 characters'
-		})
-	}
-    const hashedNewPassword = await bcrypt.hash(req.body.newpassword, 10);
-    console.log(hashedNewPassword);
+    const { 
+        oldpassword: oldpassword,
+        newpassword: plainTextPassword
+    } = req.body
 
     const authHeader = req.headers['authorization'];
     const token = authHeader && authHeader.split(' ')[1];
@@ -162,19 +154,40 @@ app.post('/auth/change-password', async (req, res) => {
         if (err) {
             return res.status(401).send({ status: 'error', error: err.message });
         }
-        req.user = user;
 
-        // todo findAndUpdate user with new password
+        // todo find user and compare old passwords
+        const userInDb = await User.findOne({ email: user.email }).lean()
+        if (!userInDb) {
+            return res.json({ status: 'error', error: 'Invalid email/password (user == null)' });
+        }
+        if (await bcrypt.compare(oldpassword, userInDb.password)) {
+        
+        // check if new password is valid
+        if (!plainTextPassword || typeof plainTextPassword !== 'string') {
+            return res.status(400).json({ status: 'error', error: 'Invalid new password' })
+        }
+        if (plainTextPassword.length < 6) {
+            return res.status(400).json({
+                status: 'error',
+                error: 'New password too small. Should be at least 6 characters'
+            })
+        }
+        const hashedNewPassword = await bcrypt.hash(req.body.newpassword, 10);
+        console.log(hashedNewPassword);
+
+        // findAndUpdate user with new password
         await User.updateOne({ _id: user._id }, {
             $set: { password: hashedNewPassword }
         }, { new: true })
             .then((result) => {
-                console.log('CHANGE PASSWORD RESULT = \nresult')
-                return res.status(200).send({ status: 'ok', body: result })
+                return res.status(200).send({ status: 'ok', body: hashedNewPassword })
             })
             .catch((err) => {
                 return res.status(500).send({ status: 'error', error: err.message })
             });
+        }
+
+        res.json({ status: 'error', error: 'Invalid email/password (incorrect password)' });
     });
 });
 
