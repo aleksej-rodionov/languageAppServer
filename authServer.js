@@ -97,7 +97,7 @@ app.post('/auth/login', async (req, res) => {
                 console.log("ERROR STORING REFRESH_TOKEN:\n" + err);
             });
 
-        return res.json({ status: 'ok', body: { accessToken: token, accessTokenExp: 1800, refreshToken: refreshToken }});
+        return res.json({ status: 'ok', body: { accessToken: token, accessTokenExp: 86400, refreshToken: refreshToken }});
 	}
 
 	res.json({ status: 'error', error: 'Invalid email/password (incorrect password)' });
@@ -132,7 +132,7 @@ app.post('/auth/refresh/', async (req, res) => {
         //     });
         //=================================REFRESH REFRESHTOKEN WHEN REFRESH TOKEN===================================================
 
-        return res.json({ status: 'ok', body: { accessToken: accessToken, accessTokenExp: 1800, refreshToken: null }});
+        return res.json({ status: 'ok', body: { accessToken: accessToken, accessTokenExp: 86400, refreshToken: null }});
 
     });
     //====================================================================================
@@ -186,5 +186,5 @@ app.use((req, res) => {
 
 //===========================FUNCTIONS============================
 function generateAccessToken(user) {
-    return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1800s' });
+    return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '86400' });
 }

@@ -1,6 +1,5 @@
 next:
+-1) POST single file with 'desc' second parameter
 0) Write error codes everywhere
-0.5) Make dbSearches by user _id, not by email
-1) How to do so that :id, :email were mutable query parameters? (NOT user/:<id>, BUT user?id=<id>)
-2) Change Password func
+1) Make dbSearches by user _id, not by email
 3) Return new RefreshToken (aside from AccessToken) in response to refresh-token call
