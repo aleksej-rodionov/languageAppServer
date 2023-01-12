@@ -14,6 +14,9 @@ router.delete('/:id', userController.user_delete);
 
 router.get('/current', authenticateToken, userController.user_current);
 router.put('/change-password', authenticateToken, userController.change_password);
+router.put('/change-ava', authenticateToken, userController.change_ava);
+
+router.post('/add-field', userController.add_field);
 
 module.exports = router;
 

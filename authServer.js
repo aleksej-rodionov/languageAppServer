@@ -186,5 +186,5 @@ app.use((req, res) => {
 
 //===========================FUNCTIONS============================
 function generateAccessToken(user) {
-    return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '86400' });
+    return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '86400s' });
 }

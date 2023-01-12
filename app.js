@@ -16,11 +16,14 @@ const bodyParser = require('body-parser');
 
 // dbUri
 const dbURI = 'mongodb+srv://alexey:Govnohuy91@realblog.a3hilmj.mongodb.net/language-app?retryWrites=true&w=majority'
-
+var db;
 
 mongoose.set("strictQuery", false); // added because of 15.12.22 Warning
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then((result) => { app.listen(3000) })
+    .then((result) => { 
+        db = result;
+        app.listen(3000)
+     })
     .catch((err) => { console.log(err) });
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -36,6 +39,7 @@ app.use('/users', userRoutes);
 app.use('/notes', noteRoutes);
 app.use('/englishwords', englishWordRoutes);
 app.use('/englishcategories', englishCategoryRoutes);
+
 
 
 app.use((req, res) => {

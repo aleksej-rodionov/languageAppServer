@@ -1,5 +1,6 @@
 next:
 -1) POST single file with 'desc' second parameter
 0) Write error codes everywhere
+2) implement s3
 1) Make dbSearches by user _id, not by email
 3) Return new RefreshToken (aside from AccessToken) in response to refresh-token call

@@ -117,6 +117,45 @@ const change_password = async (req, res) => {
     // return res.status(400).send({ status: 'error', error: 'Invalid email/password (incorrect password)' });
 }
 
+const change_ava = async (req, res) => {
+    const avaUrl = req.query.avaurl;
+    const user = req.user;
+
+
+    // await User.findOneAndUpdate(
+    //      {email: user.email },
+    //     {$set: {ava_url: avaUrl } },
+    //     { upsert: true }
+    // )
+    await User.findByIdAndUpdate(
+         user._id ,
+       {$set: {ava_url: avaUrl } },
+       { upsert: true }
+   )
+    .then((result) => {
+        console.log(`USER WITH UPDATED AVA = \n${result}`)
+        return res.status(200).send({ status: 'ok', body: result })
+    })
+    .catch((err) => {
+        return res.status(500).send({ status: 'error', error: err.message })
+    });
+}
+
+const add_field = async (req, res) => {
+    User.findByIdAndUpdate(
+        {},
+        { $set: {"ava_url": null } },
+        // {upsert:false},
+        {multi:true}
+    )
+    .then((result) => {
+        return res.status(200).send({ status: 'ok', body: result })
+    })
+    .catch((err) => {
+        return res.status(500).send({ status: 'error', error: err.message })
+    });
+}
+
 
 
 module.exports = {
@@ -126,7 +165,9 @@ module.exports = {
     // user_update,
     user_delete,
     user_current,
-    change_password
+    change_password,
+    change_ava,
+    add_field
 }
 
 

@@ -3,10 +3,6 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
     // userId
-    // username: {
-    //     type: String,
-    //     required: true
-    // },
     email: {
         type: String,
         required: true,
@@ -15,6 +11,12 @@ const userSchema = new Schema({
     password: {
         type: String,
         required: true
+    },
+    ava_url: {
+        type: String
+    },
+    username: {
+        type: String
     }
     // todo add engProgress
     // todo add catSettings
