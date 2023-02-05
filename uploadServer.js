@@ -29,16 +29,9 @@ app.post(
                 fileUrls.push(filepath)
                 console.log(fileUrls)
                 console.log(`fileUrls.length = ${fileUrls.length}`)
-                // console.log(`files.length = ${files.length}`)
-                // if(fileUrls.length === files.length) {
-                //     console.log(fileUrls)
-                    return res.json({ status: 'ok',  body: fileUrls[0] }) // TODO SENDS RESPONSE AFTER 1 LOOP. FIX IT
-                // }
+                return res.json({ status: 'ok',  body: fileUrls[0] }) // TODO SENDS RESPONSE AFTER 1 LOOP. FIX IT
             })
         })
-        console.log(`LAST fileUrls.length = ${fileUrls.length}`)
-
-        // return res.json({ status: 'ok',  body: fileUrls })
-        
+        console.log(`LAST fileUrls.length = ${fileUrls.length}`)        
     }
 )
