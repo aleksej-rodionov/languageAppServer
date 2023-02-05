@@ -1,4 +1,5 @@
 const EnglishWord = require('../models/englishWord');
+const fs = require("fs");
 
 
 
@@ -61,6 +62,21 @@ const englishword_details = (req, res) => {
         })
 }
 
+const englishwords = (req, res) => {
+    const file = 'engwords.json'
+    fs.readFile(file, (err, data) => {
+        if (err) return res.status(500).send({ status: 'error', error: err.message })
+        
+        try {
+           const json = JSON.parse(data);
+            return res.status(200).send({ status: 'ok', body: json })
+          } catch(exception) {
+            return res.status(500).send({ status: 'error', error: exception.message })
+          }
+   
+    })
+}
+
 
 
 module.exports = {
@@ -68,5 +84,6 @@ module.exports = {
     englishword_update,
     englishword_delete,
     englishword_index,
-    englishword_details
+    englishword_details,
+    englishwords
 }

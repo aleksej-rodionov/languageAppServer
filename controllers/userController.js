@@ -118,22 +118,15 @@ const change_password = async (req, res) => {
 }
 
 const change_ava = async (req, res) => {
-    const avaUrl = req.query.avaurl;
+    const avaUrl = req.body.avaurl;
     const user = req.user;
 
-
-    // await User.findOneAndUpdate(
-    //      {email: user.email },
-    //     {$set: {ava_url: avaUrl } },
-    //     { upsert: true }
-    // )
-    await User.findByIdAndUpdate(
-         user._id ,
-       {$set: {ava_url: avaUrl } },
-       { upsert: true }
-   )
+    await User.findOneAndUpdate(
+         {email: user.email },
+        {$set: {ava_url: avaUrl } },
+        { new: true }
+    )
     .then((result) => {
-        console.log(`USER WITH UPDATED AVA = \n${result}`)
         return res.status(200).send({ status: 'ok', body: result })
     })
     .catch((err) => {

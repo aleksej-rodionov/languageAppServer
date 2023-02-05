@@ -15,8 +15,8 @@ POST http://localhost:4000/auth/register
 Content-Type: application/json
 
 {
-    "email": "lil@gmail.com",
-    "password": "lil9999"
+    "email": "app@dev.com",
+    "password": "lol999"
 }
 
 
@@ -25,8 +25,8 @@ POST http://localhost:4000/auth/login
 Content-Type: application/json
 
 # {
-#     "email": "rodionovjr991@gmail.com",
-#     "password": "password3"
+#     "email": "app@dev.com",
+#     "password": "lol999"
 # }
 
 {
@@ -51,6 +51,59 @@ Content-Type: application/json
 {
     "refreshtoken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzllOTMwN2M2MzUxMWUwNzllNjRkNjQiLCJlbWFpbCI6InJvZGlvbm92anI5MUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRvQjA4cGN2WDBPR29velhVdW4ybDhPSjJSeFpWTWRmSGc1QnVvSk9BRlVxNlF1Z1JTVzVKNiIsImNyZWF0ZWRBdCI6IjIwMjItMTItMThUMDQ6MTE6NTEuMzA3WiIsInVwZGF0ZWRBdCI6IjIwMjMtMDEtMDJUMTI6NTg6NDIuMjExWiIsIl9fdiI6MCwiaWF0IjoxNjcyNjY0Njg3fQ.FiGwNGah_OovgrgpnXdBGs9kh_8Ve4lyY1r_dGuPGfg"
 }
+
+
+
+######################################### USERS #########################################
+GET http://localhost:3000/users/current
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2MwMGUzMDNkZTlhZmI2MzBmOTA0ZjYiLCJlbWFpbCI6InJvZGlvbm92anI5MUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRBUTJKT0Izd1JldmZmS1ZVU1I4TGkuZ1p2NmZaelFDU0dBZkFYb2hMVTRUa2cwcVk0Vk0udSIsImNyZWF0ZWRBdCI6IjIwMjMtMDEtMTJUMTM6NDI6MDguMDA3WiIsInVwZGF0ZWRBdCI6IjIwMjMtMDEtMTNUMTU6MzU6MDguODA1WiIsIl9fdiI6MCwiaWF0IjoxNjczNjI0NDg4LCJleHAiOjE2NzM3MTA4ODh9.-srlrhfJ-r5d48v0a-dia61_kfW-MoxHLVrAiA6pbJk
+
+
+###
+PUT http://localhost:3000/users/change-password
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzllOTMwN2M2MzUxMWUwNzllNjRkNjQiLCJlbWFpbCI6InJvZGlvbm92anI5MUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRxMU1RcUdRTUguZ1NpQ0N1dHNnSGx1eFRQWk5zWlV0aVZZNnd0MWxheHJ6ZHJab0RFWTdaaSIsImNyZWF0ZWRBdCI6IjIwMjItMTItMThUMDQ6MTE6NTEuMzA3WiIsInVwZGF0ZWRBdCI6IjIwMjMtMDEtMDJUMTk6MTA6MzUuNDYxWiIsIl9fdiI6MCwiaWF0IjoxNjcyNjg5MDAzLCJleHAiOjE2NzI2OTA4MDN9.LMbcSHqi13DOHSccbggU6EJVamNtmyDGD4kHKMB7B_I
+
+{
+    "oldpassword": "lol000",
+    "newpassword": "lol999"
+}
+
+
+###
+PUT http://localhost:3000/users/change-ava
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2MwMGUzMDNkZTlhZmI2MzBmOTA0ZjYiLCJlbWFpbCI6InJvZGlvbm92anI5MUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRBUTJKT0Izd1JldmZmS1ZVU1I4TGkuZ1p2NmZaelFDU0dBZkFYb2hMVTRUa2cwcVk0Vk0udSIsImNyZWF0ZWRBdCI6IjIwMjMtMDEtMTJUMTM6NDI6MDguMDA3WiIsInVwZGF0ZWRBdCI6IjIwMjMtMDEtMTNUMTU6MzU6MDguODA1WiIsIl9fdiI6MCwiaWF0IjoxNjczNjI0NDg4LCJleHAiOjE2NzM3MTA4ODh9.-srlrhfJ-r5d48v0a-dia61_kfW-MoxHLVrAiA6pbJk
+
+{
+    "avaurl": "https://f6j6u6m9.ssl.hwcdn.net/content/170508/she-enjoys-using-her-big-round-ass-and-nice-firm-breasts-for-seduction-08.jpg"
+}
+
+
+###
+POST http://localhost:3000/users/add-field
+
+
+###
+PUT http://localhost:3000/users/:id
+Content-Type: application/json
+
+{
+    "username": "testUser999",
+    "password": "password999"
+}
+
+
+###
+DELETE http://localhost:3000/users/:id
+
+
+###
+GET http://localhost:3000/users/
+
+
+###
+GET http://localhost:3000/users/:id
 
 
 
@@ -97,54 +150,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzllOTMwN
 
 
 
-######################################### USERS #########################################
-GET http://localhost:3000/users/current
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzllOTMwN2M2MzUxMWUwNzllNjRkNjQiLCJlbWFpbCI6InJvZGlvbm92anI5MUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRzT1lhWHE0NEVYLkczYlR2dG1mMGVlZ3BONnNPNjFjWHNPakVRZDJXSUVabFUucWU2UG1LLiIsImNyZWF0ZWRBdCI6IjIwMjItMTItMThUMDQ6MTE6NTEuMzA3WiIsInVwZGF0ZWRBdCI6IjIwMjMtMDEtMDJUMjA6MDU6MTkuNzI1WiIsIl9fdiI6MCwiaWF0IjoxNjczNTE0MzQyLCJleHAiOjE2NzM2MDA3NDJ9.5dWbhCPANPy0ZniUX5frgrnMF13qNosDndBNP3roapQ
-
-
-###
-PUT http://localhost:3000/users/change-password
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzllOTMwN2M2MzUxMWUwNzllNjRkNjQiLCJlbWFpbCI6InJvZGlvbm92anI5MUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRxMU1RcUdRTUguZ1NpQ0N1dHNnSGx1eFRQWk5zWlV0aVZZNnd0MWxheHJ6ZHJab0RFWTdaaSIsImNyZWF0ZWRBdCI6IjIwMjItMTItMThUMDQ6MTE6NTEuMzA3WiIsInVwZGF0ZWRBdCI6IjIwMjMtMDEtMDJUMTk6MTA6MzUuNDYxWiIsIl9fdiI6MCwiaWF0IjoxNjcyNjg5MDAzLCJleHAiOjE2NzI2OTA4MDN9.LMbcSHqi13DOHSccbggU6EJVamNtmyDGD4kHKMB7B_I
-
-{
-    "oldpassword": "lol000",
-    "newpassword": "lol999"
-}
-
-
-###
-PUT http://localhost:3000/users/change-ava?ava-url=https://f6j6u6m9.ssl.hwcdn.net/content/170508/she-enjoys-using-her-big-round-ass-and-nice-firm-breasts-for-seduction-08.jpg
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzllOTMwN2M2MzUxMWUwNzllNjRkNjQiLCJlbWFpbCI6InJvZGlvbm92anI5MUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRzT1lhWHE0NEVYLkczYlR2dG1mMGVlZ3BONnNPNjFjWHNPakVRZDJXSUVabFUucWU2UG1LLiIsImNyZWF0ZWRBdCI6IjIwMjItMTItMThUMDQ6MTE6NTEuMzA3WiIsInVwZGF0ZWRBdCI6IjIwMjMtMDEtMDJUMjA6MDU6MTkuNzI1WiIsIl9fdiI6MCwiaWF0IjoxNjczNTE0MzQyLCJleHAiOjE2NzM2MDA3NDJ9.5dWbhCPANPy0ZniUX5frgrnMF13qNosDndBNP3roapQ
-
-
-###
-POST http://localhost:3000/users/add-field
-
-
-###
-PUT http://localhost:3000/users/:id
-Content-Type: application/json
-
-{
-    "username": "testUser999",
-    "password": "password999"
-}
-
-
-###
-DELETE http://localhost:3000/users/:id
-
-
-###
-GET http://localhost:3000/users/
-
-
-###
-GET http://localhost:3000/users/:id
-
-
-
 
 ######################################### ENGLISHWORDS #########################################
 POST http://localhost:3000/englishwords
@@ -174,6 +179,10 @@ GET http://localhost:3000/englishwords/
 
 ###
 GET http://localhost:3000/englishwords/:id
+
+
+###
+GET http://localhost:3000/englishwords/index
 
 
 

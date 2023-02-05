@@ -54,12 +54,19 @@ app.post('/auth/register', async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
-    const user = new User({ email: email, password: plainTextPassword });
+    const user = new User({
+        email: email,
+        password: plainTextPassword,
+        ava_url: null,
+        username: null
+    });
 
     try {
         const response = await User.create({
 			email,
-			password: hashedPassword
+			password: hashedPassword,
+            ava_url: null,
+            username: null
 		});
         console.log('User created successfully: ', response)
     } catch (err) {
